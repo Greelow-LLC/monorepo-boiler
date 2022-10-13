@@ -1,7 +1,7 @@
-import React, { useEffect } from 'react';
 import { SearchIcon } from 'components/svg';
+import React, { useEffect } from 'react';
 
-interface SearchInputProps {
+interface Props {
   value: string;
   valueToFilter?: string;
   secondValueToFilter?: string;
@@ -11,7 +11,7 @@ interface SearchInputProps {
   placeholder?: string;
 }
 
-const SearchInput: React.FC<SearchInputProps> = ({
+const SearchInput = ({
   value,
   valueToFilter = 'descri',
   secondValueToFilter = '',
@@ -19,17 +19,17 @@ const SearchInput: React.FC<SearchInputProps> = ({
   setResults,
   itemsToSearch,
   placeholder = 'Search',
-}) => {
+}: Props) => {
   useEffect(() => {
     //chose in props the filter condition
     const filterItems = (items: any[], value: string) => {
       return items.filter(item =>
         value.length
           ? secondValueToFilter.length
-            ? item![valueToFilter][secondValueToFilter]
+            ? item?.[valueToFilter][secondValueToFilter]
                 ?.toLowerCase()
                 .includes(value.toLowerCase())
-            : item![valueToFilter]?.toLowerCase().includes(value.toLowerCase())
+            : item?.[valueToFilter]?.toLowerCase().includes(value.toLowerCase())
           : [],
       );
     };
@@ -37,7 +37,7 @@ const SearchInput: React.FC<SearchInputProps> = ({
     itemsToSearch && setResults(filterItems(itemsToSearch, value));
   }, [value, itemsToSearch]); // eslint-disable-line
 
-  return itemsToSearch!.length ? (
+  return itemsToSearch?.length ? (
     <div className="flex justify-start pt-10 pb-3 items-center pr-5">
       <div className="border bg-white-off rounded-md">
         <div className="flex items-center gap-2 px-2 bg-white">

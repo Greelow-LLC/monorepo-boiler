@@ -13,5 +13,8 @@ export class Users extends Base {
   lastName: string;
 
   @Column({ nullable: false })
+  password: string;
+
+  @Column({ nullable: false })
   phone: string;
 }

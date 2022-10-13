@@ -13,6 +13,7 @@ export { RefreshIcon } from 'components/svg/RefreshIcon';
 export { ShopIcon } from 'components/svg/ShopIcon';
 export { SearchIcon } from 'components/svg/SearchIcon';
 export { SocialIcon } from 'components/svg/SocialIcon';
+export { SpinnerIcon } from '@/components/svg/SpinnerIcon';
 export { StatusIcon } from 'components/svg/StatusIcon';
 export { StopIcon } from 'components/svg/StopIcon';
 export { TestIcon } from 'components/svg/TestIcon';

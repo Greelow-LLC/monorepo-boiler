@@ -10,9 +10,8 @@ export const cryptPass = (password: string) => {
   return hash;
 };
 
-export const comparePass = (reqPass: string, userPass: string): boolean => {
-  return bcrypt.compareSync(reqPass, userPass);
-};
+export const comparePass = (reqPass: string, userPass: string): boolean =>
+  bcrypt.compareSync(reqPass, userPass);
 
 export interface userTokenPayload {
   id: number;

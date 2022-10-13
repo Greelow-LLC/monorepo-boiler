@@ -1,13 +1,15 @@
+import api from 'api';
 import { getCookie, setCookie } from 'cookies-next';
 import { getExpireDate, isExpired } from 'utils/helpers';
-import api from 'api';
+
+const API_KEY = process.env.NEXT_PUBLIC_API_KEY;
 
 const getHeaders = () => {
   const token = getCookie('token') as string;
   return {
     token,
     headers: {
-      'api-key': `${process.env.NEXT_PUBLIC_API_KEY}`,
+      'api-key': `${API_KEY}`,
     },
   };
 };
@@ -22,7 +24,7 @@ const refreshToken = async () => {
   try {
     const {
       data: { token: newToken },
-    } = await api.get('refresh-token', {
+    } = await api.get(`refresh-token`, {
       headers: {
         ...headers,
         ...setToken(token),
@@ -32,11 +34,11 @@ const refreshToken = async () => {
     setCookie('token', newToken);
     return newToken;
   } catch (error) {
-    console.error('erroooor');
+    return error;
   }
 };
 
-export const postHttp = async (endpoint: string, body: Object) => {
+export const postHttp = async (endpoint: string, body: any) => {
   const { headers, token } = getHeaders();
 
   const exp = getExpireDate(token);
@@ -79,12 +81,14 @@ export const getHttp = async (endpoint: string, customToken?: any) => {
         ...setToken(tokenToSend),
       };
 
-  const { data } = await api.get(`${endpoint}`, { headers: headersToSend });
+  const { data } = await api.get(`${endpoint}`, {
+    headers: headersToSend,
+  });
 
   return data;
 };
 
-export const putHttp = async (endpoint: string, id: number, body: Object) => {
+export const putHttp = async (endpoint: string, id: number, body: any) => {
   const { headers, token } = getHeaders();
 
   const exp = getExpireDate(token);

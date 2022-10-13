@@ -1,25 +1,20 @@
-import * as Yup from 'yup';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Button from 'components/Button';
+import CustomInput from 'components/CustomInput';
+import Loader from 'components/Loader';
 import { getCookie } from 'cookies-next';
 import { ErrorMessage, Form, Formik } from 'formik';
-
-import { GetServerSideProps, NextPage } from 'next';
-import { useRouter } from 'next/router';
-import { useState } from 'react';
-
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { umbrellaBeachIconDefinition } from '@/plugins/fontawesome';
-
-import { FormValues, LogInValues } from 'types/forms';
-import { errorMessage } from 'utils/helpers';
-
 import useAuth from 'hooks/crud/useAuth';
 import useError from 'hooks/useError';
 import useSubmit from 'hooks/useSubmit';
 import MainLayout from 'layouts';
+import { GetServerSideProps, NextPage } from 'next';
+import { useState } from 'react';
+import { FormValues, LogInValues } from 'types/forms';
+import { errorMessage } from 'utils/helpers';
+import * as Yup from 'yup';
 
-import Button from 'components/Button';
-import CustomInput from 'components/CustomInput';
-import Loader from 'components/Loader';
+import { umbrellaBeachIconDefinition } from '@/plugins/fontawesome';
 
 const logInSchema = Yup.object().shape({
   email: Yup.string()
@@ -30,11 +25,9 @@ const logInSchema = Yup.object().shape({
 
 const LogIn: NextPage = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [isNetWorkError, setNetworkError] = useState<string | null>(null);
+  const [, setNetworkError] = useState<string | null>(null);
 
-  const router = useRouter();
-
-  const { handleLogin, errorLogin, isErrorLogin, isLoadingLogin } = useAuth();
+  const { handleLogin, errorLogin, isErrorLogin } = useAuth();
 
   const { renderError } = useError();
 
@@ -76,11 +69,10 @@ const LogIn: NextPage = () => {
               <Formik
                 initialValues={logInValues}
                 validationSchema={logInSchema}
-                onSubmit={onSubmit}
-              >
+                onSubmit={onSubmit}>
                 {({ getFieldProps, dirty }) => (
                   <Form>
-                    {isErrorLogin && !dirty &&(
+                    {isErrorLogin && !dirty && (
                       <div className="flex justify-center py-3">
                         {renderError(
                           (errorMessage(errorLogin) as string) ||
@@ -92,7 +84,7 @@ const LogIn: NextPage = () => {
                       <CustomInput
                         id="email"
                         label="Email address"
-                        otherClassNames="mb-4"
+                        className="mb-4"
                         {...getFieldProps('email')}
                       />
                       <ErrorMessage
@@ -105,7 +97,7 @@ const LogIn: NextPage = () => {
                         id="password"
                         isPassWordInput
                         label="Password"
-                        otherClassNames="mb-4"
+                        className="mb-4"
                         {...getFieldProps('password')}
                       />
                       <ErrorMessage
@@ -119,7 +111,7 @@ const LogIn: NextPage = () => {
                         size="full"
                         label={
                           isLoading ? (
-                            <Loader hasLogo={false} isScreen={false} isButton />
+                            <Loader isScreen={false} isButton />
                           ) : (
                             'Submit'
                           )

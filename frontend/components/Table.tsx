@@ -1,7 +1,6 @@
-import React from 'react';
+import { PencilIcon, TrashIcon } from 'components/svg';
 import { formatCapitalizeFirstWord } from 'utils/formatters';
-import { PencilIcon, TrashIcon } from './svg';
-import { separateCamelCaseString } from '../utils/formatters';
+import { separateCamelCaseString } from 'utils/formatters';
 
 interface Props {
   data: any[] | undefined;
@@ -11,13 +10,13 @@ interface Props {
   onDelete?: () => void;
 }
 
-const Table: React.FC<Props> = ({
+const Table = ({
   data = [],
   hasButtons = false,
-  setActive = () => {},
-  onDelete = () => {},
-  onEdit = () => {},
-}) => {
+  setActive = () => undefined,
+  onDelete = () => undefined,
+  onEdit = () => undefined,
+}: Props) => {
   return (
     <div className="flex flex-col">
       <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -32,8 +31,7 @@ const Table: React.FC<Props> = ({
                         <th
                           key={index}
                           scope="col"
-                          className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider"
-                        >
+                          className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
                           {separateCamelCaseString(
                             key.includes('_') ? key.replace('_', ' ') : key,
                           )}
@@ -44,14 +42,12 @@ const Table: React.FC<Props> = ({
                     <>
                       <th
                         scope="col"
-                        className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider"
-                      >
+                        className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
                         Edit
                       </th>
                       <th
                         scope="col"
-                        className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider"
-                      >
+                        className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
                         Delete
                       </th>
                     </>
@@ -64,8 +60,7 @@ const Table: React.FC<Props> = ({
                     {Object.keys(obj).map((key: any) => (
                       <td
                         key={key}
-                        className="py-4 px-10 text-center truncate max-w-[22ch]"
-                      >
+                        className="py-4 px-10 text-center truncate max-w-[22ch]">
                         {formatCapitalizeFirstWord(obj[key]) ?? 'N/A'}
                       </td>
                     ))}
@@ -77,8 +72,7 @@ const Table: React.FC<Props> = ({
                             onClick={() => {
                               onEdit();
                               setActive(obj.id);
-                            }}
-                          >
+                            }}>
                             <PencilIcon />
                           </button>
                         </td>
@@ -88,8 +82,7 @@ const Table: React.FC<Props> = ({
                             onClick={() => {
                               onDelete();
                               setActive(obj.id);
-                            }}
-                          >
+                            }}>
                             <TrashIcon />
                           </button>
                         </td>

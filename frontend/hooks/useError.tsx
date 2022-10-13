@@ -1,5 +1,5 @@
-import { ReactElement } from 'react';
 import CustomError from 'components/CustomError';
+import { ReactElement } from 'react';
 
 export const useError = () => {
   const renderError = (msg: string): ReactElement => (

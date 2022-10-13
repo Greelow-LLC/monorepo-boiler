@@ -1,5 +1,3 @@
-import React from 'react';
-
 const useClose = (
   setModalOpen: React.Dispatch<React.SetStateAction<boolean>>,
   setIsEditOrCreate: React.Dispatch<React.SetStateAction<boolean>>,

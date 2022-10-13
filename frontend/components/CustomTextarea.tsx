@@ -1,22 +1,18 @@
-import React from "react";
-
-interface CustomTextareaProps {
-  otherClassNames?: string;
+interface Props {
+  className?: string;
   placeholder?: string;
   id: string;
   rows?: number;
   label?: string;
-  mask?: any;
 }
 
-const CustomTextarea: React.FC<CustomTextareaProps> = ({
-  otherClassNames,
+const CustomTextarea = ({
+  className,
   id,
   label,
   rows = 3,
-  mask = null,
   ...props
-}) => {
+}: Props) => {
   return (
     <div>
       {label && (
@@ -27,7 +23,7 @@ const CustomTextarea: React.FC<CustomTextareaProps> = ({
       <textarea
         {...props}
         rows={rows}
-        className={`p-3 w-full rounded-3xl bg-white-off border-gray-300 ${otherClassNames}`}
+        className={`p-3 w-full rounded-3xl bg-white-off border-gray-300 ${className}`}
       />
     </div>
   );

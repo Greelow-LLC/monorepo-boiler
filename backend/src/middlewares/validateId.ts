@@ -6,15 +6,16 @@ export const validateId =
   (entity: any) => async (req: Request, res: Response, next: NextFunction) => {
     const entityName = entity.name;
 
+    const singleEntityName =
+      entityName === 'Countries'
+        ? 'Country'
+        : entityName.substring(0, entityName.length - 1);
+
     try {
       const item = await AppDataSource.manager.findOne(entity, {
         where: { id: +req.params.id },
       });
-      if (!item)
-        throw await customError(
-          `${entityName.substring(0, entityName.length - 1)} not found`,
-          2,
-        );
+      if (!item) throw await customError(`${singleEntityName} not found`, 2);
 
       res.locals.item = item;
       next();

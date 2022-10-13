@@ -1,15 +1,14 @@
+import { createCountries, editCountries } from 'api/countries';
+import { deleteCountries, getCountries } from 'api/countries';
 import { AxiosError } from 'axios';
 import { useQueryClient, useMutation, useQuery } from 'react-query';
-
-import { createCountries, editCountries } from 'api/countries';
 import { CountriesData, EditCountryKey } from 'types/api';
 import { CountriesValues } from 'types/forms';
-import { deleteCountries, getCountries } from 'api/countries';
 
 const useCountry = () => {
   const queryClient = useQueryClient();
 
-  const key: string = 'countries';
+  const key = 'countries';
 
   //get
   const {

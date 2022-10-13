@@ -5,6 +5,7 @@ import {
   getAllUsers,
   getOneUser,
   registerOneUser,
+  loginOneUser,
   updateOneUser,
 } from 'services/Users.Services';
 
@@ -15,6 +16,11 @@ export const registerUser = async (
   req: Request<unknown, unknown, Users>,
   res: Response,
 ): Promise<Response> => res.json(await registerOneUser(req.body));
+
+export const loginUser = async (
+  req: Request<unknown, unknown, Users>,
+  res: Response,
+): Promise<Response> => res.json(await loginOneUser(req.body));
 
 export const updateUser = async (
   req: Request<unknown, unknown, Users>,

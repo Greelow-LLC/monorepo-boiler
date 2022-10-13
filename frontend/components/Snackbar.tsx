@@ -1,15 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import React, { useEffect } from 'react';
 
-export interface props {
+export interface Props {
   closeSnack: () => void;
   type: string;
   message: string | null;
 }
 
-const Snackbar: React.FC<props> = ({ closeSnack, type, message }) => {
-  const [color, setColor] = useState('bg-green-600');
+const Snackbar = ({ closeSnack, type, message }: Props) => {
   useEffect(() => {
     if (message != null)
       setTimeout(() => {
@@ -17,16 +16,12 @@ const Snackbar: React.FC<props> = ({ closeSnack, type, message }) => {
       }, 5000);
   }, [message]);
 
-  useEffect(() => {
-    type == 'success' ? setColor('bg-green-600') : setColor('bg-red-600');
-  }, [type]);
   return (
     <div
       className={
         type +
         ' fixed top-[20px] right-[30px] rounded space-x-2 shadow min-w-[300px] min-h-[50px] px-2 py-1 text-white flex justify-between items-center'
-      }
-    >
+      }>
       <div>{message && <span>{message}</span>}</div>
       <div>
         <FontAwesomeIcon

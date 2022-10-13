@@ -1,10 +1,8 @@
-import dayjs from 'dayjs';
 import { AxiosError } from 'axios';
+import dayjs from 'dayjs';
 import { decode } from 'jsonwebtoken';
 
-export const decodeToken = (token: string) => {
-  return decode(token) ?? null;
-};
+export const decodeToken = (token: string) => decode(token) ?? null;
 
 export const getExpireDate = (token: string) => {
   const decodedToken = decodeToken(token) as { exp: number };
@@ -20,11 +18,4 @@ export const isExpired = (exp: Date) => {
 export const errorMessage = (errorKey: AxiosError<Error, any> | null) => {
   const msg = errorKey?.response?.data?.message ?? errorKey?.message;
   return typeof msg === 'string' ? msg : msg && msg[0];
-};
-
-export const fileToBase64 = async (file: File) => {
-  const reader = new FileReader();
-  reader.readAsDataURL(file);
-  await new Promise(resolve => (reader.onload = resolve));
-  return reader.result;
 };

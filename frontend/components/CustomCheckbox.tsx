@@ -2,15 +2,15 @@ interface Props {
   note?: string;
   id: string;
   checked?: boolean;
-  otherClassNames?: string;
+  className?: string;
   containerStyles?: string;
-  label?: string;
+  label?: string | null;
   onChange?: (e: any) => void;
 }
 
 const CustomCheckbox = ({
   note,
-  otherClassNames = '',
+  className = '',
   containerStyles = '',
   id,
   label = null,
@@ -24,7 +24,7 @@ const CustomCheckbox = ({
           {...props}
           onChange={onChange}
           type="checkbox"
-          className={`focus:ring-sky-500 h-4 w-4 text-sky-600 border-gray-300 rounded ${otherClassNames}`}
+          className={`focus:ring-sky-500 h-4 w-4 text-sky-600 border-gray-300 rounded ${className}`}
         />
       </div>
       <div className="ml-3 text-sm">

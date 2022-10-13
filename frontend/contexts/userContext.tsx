@@ -6,19 +6,20 @@ import { UserContextType } from 'types/context';
 import { getExpireDate, isExpired, decodeToken } from 'utils/helpers';
 import { getHttp } from 'utils/http';
 
-type UserProviderProps = {
+type Props = {
   children: ReactNode;
 };
 
 export const UserContext = createContext<UserContextType | null>(null);
 
-const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
+const UserProvider: React.FC<Props> = ({ children }) => {
   const [currentUser, setCurrentUser] = useState<CurrentUserData | null>(null);
 
   const { replace } = useRouter();
 
-  const [currentLinkSection, setCurrentLinkSection] =
-    useState<number | null>(null);
+  const [currentLinkSection, setCurrentLinkSection] = useState<number | null>(
+    null,
+  );
 
   useEffect(() => {
     const loggedUser = getCookie('user');
@@ -71,8 +72,7 @@ const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
         login,
         currentLinkSection,
         setCurrentLinkSection,
-      }}
-    >
+      }}>
       {children}
     </UserContext.Provider>
   );

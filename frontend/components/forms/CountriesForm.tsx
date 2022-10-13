@@ -1,18 +1,15 @@
-import * as Yup from 'yup';
-import { ErrorMessage, Form, Formik } from 'formik';
-
-import React, { SetStateAction } from 'react';
-
-import { CountriesData } from 'types/api';
-import { CountriesValues, FormValues } from 'types/forms';
-import { errorMessage } from 'utils/helpers';
-
-import useCountry from 'hooks/crud/useCountry';
-import useError from 'hooks/useError';
-import useSubmit from 'hooks/useSubmit';
 import Button from 'components/Button';
 import CustomInput from 'components/CustomInput';
 import Loader from 'components/Loader';
+import { ErrorMessage, Form, Formik } from 'formik';
+import useCountry from 'hooks/crud/useCountry';
+import useError from 'hooks/useError';
+import useSubmit from 'hooks/useSubmit';
+import React, { SetStateAction } from 'react';
+import { CountriesData } from 'types/api';
+import { CountriesValues, FormValues } from 'types/forms';
+import { errorMessage } from 'utils/helpers';
+import * as Yup from 'yup';
 
 interface CountriesFormProps {
   active: CountriesData | null;
@@ -28,8 +25,8 @@ const countriesSchema = Yup.object().shape({
 
 const CountriesForm: React.FC<CountriesFormProps> = ({
   active,
-  onSubmitForm = () => {},
-  setAlert = () => {},
+  onSubmitForm = () => undefined,
+  setAlert = () => undefined,
 }) => {
   const { handleAdd, handleEdit, isErrorForm, errorAdd, errorEdit, isLoading } =
     useCountry();
@@ -53,7 +50,6 @@ const CountriesForm: React.FC<CountriesFormProps> = ({
       });
       onSubmitForm();
     } catch (error) {
-      console.log(error);
       setAlert({
         status: true,
         type: 'bg-red-600',
@@ -69,8 +65,7 @@ const CountriesForm: React.FC<CountriesFormProps> = ({
       enableReinitialize={true}
       initialValues={countriesValues}
       onSubmit={onSubmit}
-      validationSchema={countriesSchema}
-    >
+      validationSchema={countriesSchema}>
       {({ getFieldProps }) => (
         <Form>
           {isErrorForm && (
@@ -85,7 +80,7 @@ const CountriesForm: React.FC<CountriesFormProps> = ({
             <CustomInput
               id="descri"
               label="Description"
-              otherClassNames="mb-3"
+              className="mb-3"
               {...getFieldProps('descri')}
             />
             <ErrorMessage name="descri" render={msg => renderError(msg)} />
@@ -96,11 +91,7 @@ const CountriesForm: React.FC<CountriesFormProps> = ({
               color="green"
               size="full"
               label={
-                isLoading ? (
-                  <Loader hasLogo={false} isScreen={false} isButton />
-                ) : (
-                  'Submit'
-                )
+                isLoading ? <Loader isScreen={false} isButton /> : 'Submit'
               }
             />
           </div>

@@ -1,19 +1,19 @@
 import React from 'react';
 
-interface CustomSelectProps {
+interface Props {
   children: React.ReactNode;
   disabled?: boolean;
   id: string;
-  otherClassNames?: string;
+  className?: string;
   placeholder?: string;
   label?: string;
   type?: 'gray' | 'white';
 }
 
-const CustomSelect: React.FC<CustomSelectProps> = ({
+const CustomSelect: React.FC<Props> = ({
   children,
   id,
-  otherClassNames,
+  className,
   label,
   type = 'white',
   ...props
@@ -32,8 +32,7 @@ const CustomSelect: React.FC<CustomSelectProps> = ({
       )}
       <select
         {...props}
-        className={`${bgColor[type]} block w-full py-2 px-3 border border-gray-300 rounded-full shadow-sm focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm text-gray-700 ${otherClassNames}`}
-      >
+        className={`${bgColor[type]} block w-full py-2 px-3 border border-gray-300 rounded-full shadow-sm focus:outline-none focus:ring-sky-500 focus:border-sky-500 sm:text-sm text-gray-700 ${className}`}>
         {children}
       </select>
     </>

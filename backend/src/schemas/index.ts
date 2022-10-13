@@ -1,2 +1,7 @@
+export { countrySchema } from 'schemas/Country.schema';
 export { errorSchema } from 'schemas/Error.schema';
-export { userSchema } from 'schemas/User.Schema';
+export {
+  loginUserSchema,
+  registerUserSchema,
+  updateUserSchema,
+} from 'schemas/User.Schema';

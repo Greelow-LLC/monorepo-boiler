@@ -1,8 +1,8 @@
 import { Users } from 'entities/Users';
-import { createJwt } from 'utils/auth';
+import { createOne, deleteOne, findAll, findOne, updateOne } from 'services';
+import { createJwt, cryptPass } from 'utils/auth';
+import { comparePass } from 'utils/auth';
 import { customError } from 'utils/helpers';
-
-import { createOne, deleteOne, findAll, findOne, updateOne } from './';
 
 export const getAllUsers = async () => await findAll(Users);
 
@@ -10,20 +10,39 @@ export const registerOneUser = async ({
   email,
   firstName,
   lastName,
+  password,
   phone,
 }: Users) => {
   const userExists = await findOne(Users, { where: { email } });
   if (userExists) throw await customError('User already exists', 1);
 
+  const hashedPassword = cryptPass(password);
+
   const user = (await createOne(Users, {
     email,
     firstName,
     lastName,
+    password: hashedPassword,
     phone,
   })) as Users;
   const token = (await createJwt(user)) as string;
 
   return { user, token };
+};
+
+export const loginOneUser = async ({ email, password }: Users) => {
+  const userExists = await findOne(Users, { where: { email } });
+  if (!userExists) throw await customError('User not exists', 2);
+
+  console.log(userExists.password);
+
+  const passwordMatch = comparePass(password, userExists.password);
+
+  if (!passwordMatch) throw await customError('Wrong user data', 3);
+
+  const token = (await createJwt(userExists)) as string;
+
+  return { token };
 };
 
 export const updateOneUser = async (userToUpdate: Users, updateData: Users) => {

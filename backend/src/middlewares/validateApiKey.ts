@@ -9,7 +9,7 @@ export const validateApiKey = async (
   next: NextFunction,
 ) => {
   try {
-    const apiKey = req.query['api-key'];
+    const apiKey = req.headers['api-key'];
 
     let allowPath = false;
     allowedPaths.forEach(path => {

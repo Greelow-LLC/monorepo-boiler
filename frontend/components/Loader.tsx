@@ -1,20 +1,17 @@
-import Logo from 'components/Logo';
-import Spinner from './svg/Spinner';
+import { SpinnerIcon } from 'components/svg';
 
-interface LoaderProps {
+interface Props {
   isScreen?: boolean;
-  hasLogo?: boolean;
+  isButton?: boolean;
 }
 
-const Loader = ({ isScreen = true, hasLogo = true, isButton = false }) => {
+const Loader = ({ isScreen = true, isButton = false }: Props) => {
   return (
     <div
       className={`${
         isScreen && 'h-screen'
-      } flex flex-col justify-center items-center text-black`}
-    >
-      <div className="w-20">{hasLogo && <Logo color="custom-green" />}</div>
-      <Spinner
+      } flex flex-col justify-center items-center text-black`}>
+      <SpinnerIcon
         height={isButton ? '[40px]' : '[10px]'}
         width={isButton ? '[5px]' : '[80px]'}
       />

@@ -17,7 +17,7 @@ export class seed1655131781717 implements MigrationInterface {
       code: [1, 2, 3, 4, 5, 6, 7],
     });
     await AppDataSource.manager.delete(Users, {
-      firstName: ['admin', 'active', 'inactive'],
+      firstName: ['admin'],
     });
   }
 }

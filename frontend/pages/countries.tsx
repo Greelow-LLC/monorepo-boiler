@@ -1,34 +1,31 @@
-import { AxiosError } from 'axios';
-import { getCookie } from 'cookies-next';
-import { dehydrate, QueryClient } from 'react-query';
-
-import { GetServerSideProps, NextPage } from 'next';
-import { useEffect, useState } from 'react';
-
-import { CountriesData } from 'types/api';
 import { getCountries } from 'api/countries';
-import { errorMessage } from 'utils/helpers';
-
+import { AxiosError } from 'axios';
+import Button from 'components/Button';
+import CountriesForm from 'components/forms/CountriesForm';
+import Loader from 'components/Loader';
+import Modal from 'components/Modal';
+import ModalDelete from 'components/ModalDelete';
+import SearchInput from 'components/SearchInput';
+import Snackbar from 'components/Snackbar';
+import Table from 'components/Table';
+import { getCookie } from 'cookies-next';
 import useCountry from 'hooks/crud/useCountry';
 import useClose from 'hooks/useClose';
 import useError from 'hooks/useError';
-
 import MainLayout from 'layouts';
-import Button from 'components/Button';
-import CountriesForm from 'components/forms/CountriesForm';
-import ModalDelete from 'components/ModalDelete';
-import Modal from 'components/Modal';
-import Loader from 'components/Loader';
-import Table from '@/components/table';
-import Snackbar from '@/components/Snackbar';
-import SearchInput from '@/components/SearchInput';
+import { GetServerSideProps, NextPage } from 'next';
+import { useEffect, useState } from 'react';
+import { dehydrate, QueryClient } from 'react-query';
+import { CountriesData } from 'types/api';
+import { errorMessage } from 'utils/helpers';
 
 const Countries: NextPage = () => {
   const [filterValue, setFilterValue] = useState<string>('');
   const [isModalOpen, setModalOpen] = useState<boolean>(false);
   const [isEditOrCreate, setIsEditOrCreate] = useState<boolean>(false);
-  const [activeCountry, setActiveCountry] =
-    useState<CountriesData | null>(null);
+  const [activeCountry, setActiveCountry] = useState<CountriesData | null>(
+    null,
+  );
   const [alert, setAlert] = useState({
     status: false,
     type: '',
@@ -105,7 +102,7 @@ const Countries: NextPage = () => {
             )}
           </p>
         ) : isLoadingGet ? (
-          <Loader hasLogo={false} isScreen={false} />
+          <Loader isScreen={false} />
         ) : (
           <>
             <div className="flex justify-center pt-10 pb-3">
@@ -156,8 +153,7 @@ const Countries: NextPage = () => {
               persistent
               isOpen={isModalOpen}
               setIsOpen={setModalOpen}
-              onClose={handleClose}
-            >
+              onClose={handleClose}>
               {isEditOrCreate ? (
                 <CountriesForm
                   active={activeCountry}

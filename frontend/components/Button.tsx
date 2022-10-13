@@ -5,7 +5,7 @@ interface Props {
   color?: string;
   size?: string;
   hasBg?: boolean;
-  otherClassNames?: string;
+  className?: string;
   type?: 'button' | 'submit' | 'reset';
   onClick?: () => void;
   disabled?: boolean;
@@ -17,7 +17,7 @@ const Button = ({
   size = 'full',
   type = 'button',
   hasBg = true,
-  otherClassNames = '',
+  className = '',
   disabled = false,
   onClick = () => undefined,
 }: Props) => {
@@ -40,7 +40,7 @@ const Button = ({
     full: 'w-full h-[3.2rem] p-0 text-xl',
   };
 
-  const dynamicStyles = `${otherClassNames} ${
+  const dynamicStyles = `${className} ${
     hasBg && buttonColor[color as keyof typeof buttonColor]
   } ${hasBg && 'text-white shadow-sm focus:ring-2'} ${
     buttonSize[size as keyof typeof buttonSize]

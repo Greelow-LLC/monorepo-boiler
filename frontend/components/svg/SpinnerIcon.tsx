@@ -1,6 +1,6 @@
 import styles from 'styles/loader.module.css';
 
-const Spinner = ({ height = '', width = '' }) => {
+export const SpinnerIcon = ({ height = '', width = '' }) => {
   return (
     <svg
       className={`${styles.spinner} h-${height} w-${width}`}
@@ -24,5 +24,3 @@ const Spinner = ({ height = '', width = '' }) => {
     </svg>
   );
 };
-
-export default Spinner;

@@ -1,12 +1,10 @@
-import { Hydrate, QueryClient, QueryClientProvider } from 'react-query';
-import type { AppProps } from 'next/app';
-
+import Loader from 'components/Loader';
+import UserProvider from 'contexts/userContext';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
+import { Hydrate, QueryClient, QueryClientProvider } from 'react-query';
 
-import UserProvider from 'contexts/userContext';
-
-import Loader from 'components/Loader';
+import type { AppProps } from 'next/app';
 
 import 'styles/globals.css';
 

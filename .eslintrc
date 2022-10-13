@@ -22,10 +22,10 @@
       "warn",
       {
         "groups": [
+          "external",
           "type",
           "builtin",
           "object",
-          "external",
           "internal",
           "parent",
           "sibling",

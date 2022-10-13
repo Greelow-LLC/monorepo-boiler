@@ -1,4 +1,4 @@
-# 🏖 Gift Time - backoffice
+# 🏖 Boiler backoffice
 
 ```bash
 npm run dev

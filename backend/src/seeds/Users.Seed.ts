@@ -3,18 +3,7 @@ export const UsersSeed = [
     firstName: 'Admin',
     lastName: 'Greelow',
     email: 'admin@admin.com',
-    phone: '4343-4343',
-  },
-  {
-    firstName: 'Active',
-    lastName: 'User',
-    email: 'active@user.com',
-    phone: '4343-4343',
-  },
-  {
-    firstName: 'Inactive',
-    lastName: 'User',
-    email: 'inactive@user.com',
+    password: '$2b$10$Bh6zRx.nIoaYwQWCkMJbPu4R9FDs0cDB1c7J/K.ikgDEVX5FTFTsG',
     phone: '4343-4343',
   },
 ];

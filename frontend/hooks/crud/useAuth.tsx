@@ -1,10 +1,8 @@
-import { AxiosError } from 'axios';
-import { setCookie } from 'cookies-next';
-import { useMutation } from 'react-query';
-import { useContext } from 'react';
-
 import { registerUser, loginUser } from 'api/users';
+import { AxiosError } from 'axios';
 import { UserContext } from 'contexts/userContext';
+import { useContext } from 'react';
+import { useMutation } from 'react-query';
 import { RegisterUser, LoginData } from 'types/api';
 import { UserContextType } from 'types/context';
 import { FormValues, LogInValues, SignUpValues } from 'types/forms';
@@ -31,6 +29,7 @@ const useAuth = () => {
   );
 
   const handleRegister = async (values: FormValues) => {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { confirmPassword, ...valuesToSend } = values as SignUpValues;
     await register(valuesToSend as RegisterUser);
   };

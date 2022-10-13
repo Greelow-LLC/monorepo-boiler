@@ -36,6 +36,7 @@
     "express-list-endpoints": "^5.0.0",
     "jest": "^28.1.0",
     "nodemon": "^2.0.7",
+    "shx": "^0.3.4",
     "supertest": "^6.2.3",
     "ts-jest": "^28.0.3",
     "ts-node": "^10.9.1",

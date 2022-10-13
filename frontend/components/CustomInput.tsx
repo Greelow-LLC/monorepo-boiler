@@ -1,9 +1,10 @@
 import { ClosedEyeIcon, OpenedEyeIcon } from 'components/svg';
-import React, { useCallback, useState } from 'react';
-import { IMaskInput } from 'react-imask';
+import { AnyMaskedOptions } from 'imask';
+import React, { useCallback, useState, useEffect } from 'react';
+import { useIMask } from 'react-imask';
 
-interface CustomInputProps {
-  otherClassNames?: string;
+interface Props {
+  className?: string;
   placeholder?: string;
   id: string;
   label?: string;
@@ -16,23 +17,29 @@ interface CustomInputProps {
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
   name?: string;
   value?: string;
-  step?: string;
   onKeyUp?: (e: React.KeyboardEvent<HTMLInputElement>) => void;
 }
 
-const CustomInput: React.FC<CustomInputProps> = ({
-  otherClassNames,
+const CustomInput = ({
+  className,
   label,
   id,
   type = 'text',
   mask = null,
-  step = '',
   isPassWordInput = false,
   ...props
-}) => {
+}: Props) => {
   const [inputType, setInputType] = useState(
     isPassWordInput ? 'password' : type,
   );
+
+  const [opts, setOpts] = useState<AnyMaskedOptions | null>(null);
+
+  useEffect(() => {
+    setOpts(mask);
+  }, []);
+
+  const { ref } = useIMask(opts as AnyMaskedOptions);
 
   const handleToggleInputType = useCallback(() => {
     setInputType(inputType === 'password' ? 'text' : 'password');
@@ -47,12 +54,11 @@ const CustomInput: React.FC<CustomInputProps> = ({
         </label>
       )}
       <div
-        className={`mr-2 w-full h-[50px] rounded-full bg-white-off border-gray-300 flex items-center justify-between ${otherClassNames}`}>
-        <IMaskInput
+        className={`mr-2 w-full h-[50px] rounded-full bg-white-off border-gray-300 flex items-center justify-between ${className}`}>
+        <input
           {...props}
           autoComplete="off"
-          mask={mask}
-          step={step}
+          ref={ref}
           type={inputType}
           className="w-full h-full bg-transparent border-transparent focus:border-transparent focus:ring-0"
         />

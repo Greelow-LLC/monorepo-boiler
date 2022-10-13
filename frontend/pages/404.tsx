@@ -1,9 +1,8 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { umbrellaBeachIconDefinition } from 'plugins/fontawesome';
+import Button from 'components/Button';
 import { NextPage } from 'next';
 import Link from 'next/link';
-import React from 'react';
-import Button from 'components/Button';
+import { umbrellaBeachIconDefinition } from 'plugins/fontawesome';
 
 const NotFound: NextPage = () => {
   return (
