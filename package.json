@@ -1,0 +1,41 @@
+{
+  "name": "voyage-full-boiler",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint . --ext .ts",
+    "dev:server": "yarn workspace backend develop",
+    "dev:client": "yarn workspace frontend"
+  },
+  "keywords": [],
+  "author": "greelow",
+  "license": "ISC",
+  "private": "true",
+  "workspaces": [
+    "backend",
+    "frontend",
+    ""
+  ],
+  "dependencies": {
+    "axios": "^0.27.2"
+  },
+  "devDependencies": {
+    "concurrently": "^7.4.0",
+    "eslint": "8.16.0",
+    "prettier": "^2.7.1",
+    "typescript": "^4.8.4",
+    "@typescript-eslint/eslint-plugin": "^5.38.1",
+    "@typescript-eslint/parser": "^5.38.1",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-prettier": "^4.2.1"
+  },
+  "eslintConfig": {
+    "extends": "./node_modules/standard/eslintrc.json",
+    "env": {
+      "jest": true
+    }
+  },
+  "description": ""
+}
