@@ -74,7 +74,7 @@ const useCountry = () => {
   };
 
   return {
-    countries,
+    data: countries,
     isErrorGet,
     isErrorDelete,
     errorGet,

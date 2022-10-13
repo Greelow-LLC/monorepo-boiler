@@ -33,7 +33,7 @@ const Countries: NextPage = () => {
   });
 
   const {
-    countries,
+    data: countries,
     handleDelete,
     isErrorGet,
     isLoading,

@@ -12,8 +12,8 @@ const Loader = ({ isScreen = true, isButton = false }: Props) => {
         isScreen && 'h-screen'
       } flex flex-col justify-center items-center text-black`}>
       <SpinnerIcon
-        height={isButton ? '[40px]' : '[10px]'}
-        width={isButton ? '[5px]' : '[80px]'}
+        height={isButton ? '8' : '30'}
+        width={isButton ? '10' : '20'}
       />
     </div>
   );

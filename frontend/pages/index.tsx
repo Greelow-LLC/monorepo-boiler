@@ -7,18 +7,16 @@ import type { NextPage } from 'next';
 const Home: NextPage = () => {
   return (
     <MainLayout hasMenu>
-      <div className="w-full flex flex-col items-center justify-center">
-        <section>
-          <span className=" text-custom-green font-semibold text-4xl md:text-6xl">
-            Welcome to the
-          </span>
-        </section>
-        <section>
-          <div>
-            <h1 className="font-bold text-4xl md:text-6xl">Admin dashboard</h1>
-          </div>
-        </section>
-      </div>
+      <section>
+        <span className=" text-custom-green font-semibold text-4xl md:text-6xl">
+          Welcome to the
+        </span>
+      </section>
+      <section>
+        <div>
+          <h1 className="font-bold text-4xl md:text-6xl">Admin dashboard</h1>
+        </div>
+      </section>
     </MainLayout>
   );
 };

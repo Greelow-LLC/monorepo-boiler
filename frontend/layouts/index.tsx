@@ -1,9 +1,8 @@
 import Sidebar from 'components/Sidebar';
 import Head from 'next/head';
 import React from 'react';
-import styles from 'styles/Home.module.css';
 
-interface HomeProps {
+interface Props {
   children: React.ReactNode;
   page?: string;
   hasHeader?: boolean;
@@ -12,7 +11,7 @@ interface HomeProps {
 
 //TODO: fix layout design bugs
 
-const MainLayout: React.FC<HomeProps> = ({
+const MainLayout: React.FC<Props> = ({
   children,
   page = 'Home',
   hasHeader = false,
@@ -27,13 +26,13 @@ const MainLayout: React.FC<HomeProps> = ({
       </Head>
       <main>
         <div
-          className={`${hasMenu && 'grid'} ${styles.container} bg-white-off`}>
+          className={`${hasMenu && 'grid'} grid-cols-12 bg-white-off h-screen`}>
           {hasMenu && (
-            <aside className={styles.sidebar}>
+            <aside className="col-span-2">
               <Sidebar />
             </aside>
           )}
-          <section className={styles.children}>
+          <section className="col-span-10 h-full w-full flex flex-col justify-center items-center px-10">
             {hasHeader && (
               <header className="flex mb-5 justify-center items-center py-3 flex-col border-b">
                 <h2 className="font-medium text-4xl">{page}</h2>
