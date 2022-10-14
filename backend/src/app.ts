@@ -1,13 +1,13 @@
 import 'express-async-errors'; //must always be the first, ideal for error handling
 
-import { IncomingMessage, ServerResponse } from 'http';
-
 import cors from 'cors';
 import express, { Express, RequestHandler } from 'express';
 import { validateApiKey } from 'middlewares/validateApiKey';
 import morgan from 'morgan';
 import apiRouter from 'routes';
 import { renderIndex, url } from 'utils/helpers';
+
+import { IncomingMessage, ServerResponse } from 'http';
 
 const PORT = process.env.PORT || '3001';
 const PUBLIC_URL = url(PORT);

@@ -57,7 +57,7 @@ const CustomInput = ({
         className={`mr-2 w-full h-[50px] rounded-full bg-white-off border-gray-300 flex items-center justify-between ${className}`}>
         <input
           {...props}
-          autoComplete="off"
+          formNoValidate={true}
           ref={ref}
           type={inputType}
           className="w-full h-full bg-transparent border-transparent focus:border-transparent focus:ring-0"

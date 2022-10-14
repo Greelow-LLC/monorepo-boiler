@@ -1,14 +1,13 @@
-import useCrud from 'hooks/crud';
+import Snackbar from 'components/Snackbar';
+// import useCrud from 'hooks/crud';
 import MainLayout from 'layouts';
-import { useRouter } from 'next/router';
+// import { useRouter } from 'next/router';
 import { useState } from 'react';
 
-import Snackbar from '@/components/Snackbar';
-
 const Entity = () => {
-  const {
-    query: { entity },
-  } = useRouter();
+  // const {
+  //   query: { entity },
+  // } = useRouter();
 
   // const [filterValue, setFilterValue] = useState<string>('');
   // const [isModalOpen, setModalOpen] = useState<boolean>(false);
@@ -20,8 +19,7 @@ const Entity = () => {
     message: '',
   });
 
-  const { data }: any = useCrud('countries');
-  console.log(data);
+  // const { data }: any = useCrud('countries');
 
   // //search results
   // const [results, setResults] = useState<CountriesData[]>(countries || []);

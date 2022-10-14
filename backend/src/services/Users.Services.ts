@@ -32,9 +32,7 @@ export const registerOneUser = async ({
 
 export const loginOneUser = async ({ email, password }: Users) => {
   const userExists = await findOne(Users, { where: { email } });
-  if (!userExists) throw await customError('User not exists', 2);
-
-  console.log(userExists.password);
+  if (!userExists) throw await customError('Wrong user data', 3);
 
   const passwordMatch = comparePass(password, userExists.password);
 

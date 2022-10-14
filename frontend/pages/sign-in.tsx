@@ -37,8 +37,8 @@ const LogIn: NextPage = () => {
   };
 
   const handleSubmit = async (valuesToSend: FormValues) => {
-    setIsLoading(true);
     try {
+      setIsLoading(true);
       await handleLogin(valuesToSend as LogInValues);
       setNetworkError(null);
     } catch (error: any) {
@@ -49,17 +49,11 @@ const LogIn: NextPage = () => {
 
   const { onSubmit } = useSubmit(handleSubmit);
 
-  if (isLoading) return <Loader />;
-
   return (
     <MainLayout page="Sign-in">
-      <section className="flex justify-center items-center h-screen">
+      <section className="flex justify-center w-full items-center h-screen">
         <div className="w-[95%] md:w-[60%] lg:w-[50%] xl:w-[40%] 2xl:w-[30%]">
           <section className="p-12 flex flex-col justify-center items-center">
-            <FontAwesomeIcon
-              className="mb-5 h-[60px] w-[60px]"
-              icon={umbrellaBeachIconDefinition}
-            />
             <h1 className="font-bold text-md xs:text-2xl md:text-4xl">
               Log into your account
             </h1>
@@ -70,9 +64,9 @@ const LogIn: NextPage = () => {
                 initialValues={logInValues}
                 validationSchema={logInSchema}
                 onSubmit={onSubmit}>
-                {({ getFieldProps, dirty }) => (
+                {({ getFieldProps }) => (
                   <Form>
-                    {isErrorLogin && !dirty && (
+                    {isErrorLogin && (
                       <div className="flex justify-center py-3">
                         {renderError(
                           (errorMessage(errorLogin) as string) ||

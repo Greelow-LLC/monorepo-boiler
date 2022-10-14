@@ -14,7 +14,7 @@ const Home: NextPage = () => {
       </section>
       <section>
         <div>
-          <h1 className="font-bold text-4xl md:text-6xl">Admin dashboard</h1>
+          <h1 className="font-bold text-4xl md:text-6xl">Admin Dashboard</h1>
         </div>
       </section>
     </MainLayout>
