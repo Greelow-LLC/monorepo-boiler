@@ -2,9 +2,13 @@ import app from 'app';
 import { dbConnection } from 'ormconfig';
 import request from 'supertest';
 
+import { randomBytes } from 'crypto';
+
 const PORT = process.env.PORT || '3001';
 
-let connection: any, server: any;
+let connection: any, server: any, id: number;
+const descri = randomBytes(8).toString('hex');
+const updatedDescri = randomBytes(8).toString('hex');
 
 const headers = {
   'api-key': process.env.API_KEY,
@@ -25,20 +29,20 @@ describe('Countries tests', () => {
   it('get Countries', async () => {
     const response = await request(app).get(`/api/v1/countries`).set(headers);
     expect(response.statusCode).toBe(200);
-    expect(response.body).toStrictEqual([]);
   });
   it('add country', async () => {
     const response = await request(app)
       .post('/api/v1/countries/create')
       .send({
-        descri: 'USA',
+        descri,
       })
       .set(headers);
     expect(response.statusCode).toBe(200);
     expect(response.body).toStrictEqual({
-      descri: 'USA',
-      id: 1,
+      descri: expect.any(String),
+      id: expect.any(Number),
     });
+    id = response.body.id;
   });
 
   it('add country with empty description', async () => {
@@ -56,7 +60,7 @@ describe('Countries tests', () => {
     const response = await request(app)
       .post('/api/v1/countries/create')
       .send({
-        descri: 'USA',
+        descri,
       })
       .set(headers);
     expect(response.statusCode).toBe(406);
@@ -67,26 +71,26 @@ describe('Countries tests', () => {
 
   it('update country', async () => {
     const response = await request(app)
-      .put('/api/v1/countries/update/1')
+      .put(`/api/v1/countries/update/${id}`)
       .send({
-        descri: 'testUpdate',
+        descri: updatedDescri,
       })
       .set(headers);
     expect(response.statusCode).toBe(200);
     expect(response.body).toStrictEqual({
-      descri: 'testUpdate',
-      id: 1,
+      descri: updatedDescri,
+      id,
     });
   });
 
   it('delete country', async () => {
     const response = await request(app)
-      .delete('/api/v1/countries/delete/1')
+      .delete(`/api/v1/countries/delete/${id}`)
       .set(headers);
     expect(response.statusCode).toBe(200);
     expect(response.body).toStrictEqual({
-      descri: 'testUpdate',
-      id: 1,
+      descri: updatedDescri,
+      id,
       deletedAt: expect.any(Number),
       updatedAt: expect.any(Number),
     });

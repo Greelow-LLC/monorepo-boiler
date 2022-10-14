@@ -25,6 +25,5 @@ describe('Errors tests', () => {
   it('get errors', async () => {
     const response = await request(app).get(`/api/v1/errors`).set(headers);
     expect(response.statusCode).toBe(200);
-    expect(response.body).toStrictEqual([]);
   });
 });
