@@ -1,5 +1,6 @@
 {
-  "name": "voyage-full-boiler",
+  "name": "next-express-typeorm-boiler",
+  "description": "Full Stack boilerplate with Next JS, Express JS and typeORM.",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
@@ -36,6 +37,5 @@
     "env": {
       "jest": true
     }
-  },
-  "description": ""
+  }
 }
