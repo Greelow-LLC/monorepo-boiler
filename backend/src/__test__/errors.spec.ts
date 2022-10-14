@@ -6,6 +6,10 @@ const PORT = process.env.PORT || '3001';
 
 let connection: any, server: any;
 
+const headers = {
+  'api-key': process.env.API_KEY,
+};
+
 beforeAll(async () => {
   connection = await dbConnection();
   server = app.listen(PORT);
@@ -19,9 +23,7 @@ afterAll(done => {
 
 describe('Errors tests', () => {
   it('get errors', async () => {
-    const response = await request(app).get(
-      `/api/v1/errors?api-key=${process.env.API_KEY}`,
-    );
+    const response = await request(app).get(`/api/v1/errors`).set(headers);
     expect(response.statusCode).toBe(200);
     expect(response.body).toStrictEqual([]);
   });

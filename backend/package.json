@@ -45,7 +45,7 @@
     "typescript-transform-paths": "^3.3.1"
   },
   "scripts": {
-    "test": "docker ps -aq | xargs -r docker stop | xargs -r docker rm && docker volume ls -qf dangling=true | xargs -r docker volume rm && docker-compose -f 'docker-compose.yml' up -d && sleep 20 && jest -c ./jest.unit.json --maxWorkers=1",
+    "test": "docker ps -aq | xargs -r docker stop | xargs -r docker rm && docker volume ls -qf dangling=true | xargs -r docker volume rm && docker-compose -f 'docker-compose.yml' up -d && sleep 5 && jest -c ./jest.unit.json --maxWorkers=1",
     "test:coverage": "jest --coverage -c ./jest.unit.json",
     "start": "node build/index.js",
     "start:prod": "NODE_ENV=production && yarn build && yarn start",
