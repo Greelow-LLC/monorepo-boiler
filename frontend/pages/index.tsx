@@ -4,6 +4,8 @@ import { GetServerSideProps } from 'next';
 
 import type { NextPage } from 'next';
 
+//TODO components antd: [notification(snackbar), inputs, table, menu, loader, grid system]
+
 const Home: NextPage = () => {
   return (
     <MainLayout hasMenu>
