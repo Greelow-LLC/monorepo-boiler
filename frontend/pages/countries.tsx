@@ -1,6 +1,7 @@
 import { getCountries } from 'api/countries';
 import { AxiosError } from 'axios';
 import Button from 'components/Button';
+import {Button as ButtonAnt}from 'antd';
 import CountriesForm from 'components/forms/CountriesForm';
 import Loader from 'components/Loader';
 import Modal from 'components/Modal';
@@ -18,6 +19,7 @@ import { useEffect, useState } from 'react';
 import { dehydrate, QueryClient } from 'react-query';
 import { CountriesData } from 'types/api';
 import { errorMessage } from 'utils/helpers';
+import AntButton from 'components/AntButton';
 
 const Countries: NextPage = () => {
   const [filterValue, setFilterValue] = useState<string>('');
@@ -93,6 +95,9 @@ const Countries: NextPage = () => {
   return (
     <MainLayout page="Countries" hasHeader={!isLoading && !isErrorGet} hasMenu>
       <div className="w-full">
+        <AntButton color='red'>
+          Boton
+        </AntButton>
         {isErrorGet || isErrorDelete ? (
           <p className="text-center">
             {renderError(
@@ -153,7 +158,8 @@ const Countries: NextPage = () => {
               persistent
               isOpen={isModalOpen}
               setIsOpen={setModalOpen}
-              onClose={handleClose}>
+              onClose={handleClose}
+            >
               {isEditOrCreate ? (
                 <CountriesForm
                   active={activeCountry}

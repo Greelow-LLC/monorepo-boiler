@@ -1,6 +1,7 @@
 import { Dialog, Transition } from '@headlessui/react';
-import Button from 'components/Button';
-import { XIcon } from 'components/svg';
+// import Button from 'components/Button';
+import {Button} from 'antd'
+import { CloseOutlined } from '@ant-design/icons';
 import { Fragment } from 'react';
 
 interface Props {
@@ -38,7 +39,8 @@ const Modal: React.FC<Props> = ({
       <Dialog
         as="div"
         className="relative z-10"
-        onClose={() => setIsOpen(persistent)}>
+        onClose={() => setIsOpen(persistent)}
+      >
         <Transition.Child
           as={Fragment}
           enter="ease-out duration-300"
@@ -46,7 +48,8 @@ const Modal: React.FC<Props> = ({
           enterTo="opacity-100"
           leave="ease-in duration-200"
           leaveFrom="opacity-100"
-          leaveTo="opacity-0">
+          leaveTo="opacity-0"
+        >
           <div className="fixed inset-0 bg-black bg-opacity-25" />
         </Transition.Child>
 
@@ -59,24 +62,26 @@ const Modal: React.FC<Props> = ({
               enterTo="opacity-100 scale-100"
               leave="ease-in duration-200"
               leaveFrom="opacity-100 scale-100"
-              leaveTo="opacity-0 scale-95">
+              leaveTo="opacity-0 scale-95"
+            >
               <Dialog.Panel
                 className={`w-full md:w-[50%] lg:w-[60%] ${
                   sizes[size as keyof typeof sizes]
-                } transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all`}>
+                } transform overflow-hidden rounded-2xl bg-white p-6 text-left align-middle shadow-xl transition-all`}
+              >
                 <div className="flex justify-end">
                   <Button
-                    label={<XIcon />}
-                    className="flex text-center justify-center"
-                    color={'red'}
-                    size={'xs'}
-                    hasBg={false}
+                    className="bg-red-500 hover:bg-red-400 hover:text-white text-white"
+                    shape="circle"
+                    size="large"
+                    icon={<CloseOutlined />}
                     onClick={onClose}
                   />
                 </div>
                 <Dialog.Title
                   as="h3"
-                  className="text-lg text-center font-medium leading-6 text-gray-900">
+                  className="text-lg text-center font-medium leading-6 text-gray-900"
+                >
                   {title}
                 </Dialog.Title>
                 <div className="overflow-y-auto max-h-[450px] lg:max-h-[500px] px-5">

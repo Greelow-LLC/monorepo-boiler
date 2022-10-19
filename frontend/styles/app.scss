@@ -2,8 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+// antd
+@import '~antd/dist/antd.css';
+
 // global
 @import './global/resets';
 
 // custom 
+@import './custom//antd';
 @import './custom/animations';
