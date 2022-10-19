@@ -1,7 +1,7 @@
-import { join } from 'path';
-
 import dotenv from 'dotenv';
 import { DataSource } from 'typeorm';
+
+import { join } from 'path';
 
 dotenv.config(); // load .env variables
 

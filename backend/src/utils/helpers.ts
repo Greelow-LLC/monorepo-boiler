@@ -1,5 +1,3 @@
-import * as path from 'path'; // node.js internal module usefull to get file paths
-
 import dotenv from 'dotenv';
 import ejs from 'ejs'; //template engine
 import { Errors } from 'entities/Errors';
@@ -7,6 +5,8 @@ import { Request, Response, NextFunction } from 'express';
 import listEndpoints from 'express-list-endpoints'; //just a function that retrieves all the API routes
 import { findOne } from 'services';
 import { ObjectLiteral } from 'typeorm';
+
+import * as path from 'path'; // node.js internal module usefull to get file paths
 
 dotenv.config();
 

@@ -1,9 +1,9 @@
-import fs from 'fs';
-
 import AWS from 'aws-sdk';
 import { PutObjectRequest } from 'aws-sdk/clients/s3';
 import dotenv from 'dotenv';
 import puppeteer, { PDFOptions } from 'puppeteer';
+
+import fs from 'fs';
 
 dotenv.config();
 
