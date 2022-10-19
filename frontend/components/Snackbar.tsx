@@ -1,5 +1,5 @@
-import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { closeIconDefinition } from 'plugins/fontawesome';
 import React, { useEffect } from 'react';
 
 export interface Props {
@@ -26,7 +26,7 @@ const Snackbar = ({ closeSnack, type, message }: Props) => {
       <div>
         <FontAwesomeIcon
           className="w-[10px] text-sm mr-4 cursor-pointer active:w-[9px]"
-          icon={'fa-solid fa-close' as IconProp}
+          icon={closeIconDefinition}
           onClick={() => closeSnack()}
         />
       </div>

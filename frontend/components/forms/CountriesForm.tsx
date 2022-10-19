@@ -5,9 +5,10 @@ import { ErrorMessage, Form, Formik } from 'formik';
 import useCountry from 'hooks/crud/useCountry';
 import useError from 'hooks/useError';
 import useSubmit from 'hooks/useSubmit';
-import React, { SetStateAction } from 'react';
+import React, { SetStateAction, useEffect } from 'react';
 import { CountriesData } from 'types/api';
 import { CountriesValues, FormValues } from 'types/forms';
+import { formatCapitalizeFirstWord } from 'utils/formatters';
 import { errorMessage } from 'utils/helpers';
 import * as Yup from 'yup';
 
@@ -35,7 +36,7 @@ const CountriesForm: React.FC<CountriesFormProps> = ({
 
   //form value
   const countriesValues: CountriesValues = {
-    descri: active?.descri ?? '',
+    descri: formatCapitalizeFirstWord(active?.descri ?? '') || '',
   };
 
   const handleSubmit = async (values: FormValues) => {

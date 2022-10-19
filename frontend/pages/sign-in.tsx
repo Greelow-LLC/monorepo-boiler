@@ -1,4 +1,3 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Button from 'components/Button';
 import CustomInput from 'components/CustomInput';
 import Loader from 'components/Loader';
@@ -13,8 +12,6 @@ import { useState } from 'react';
 import { FormValues, LogInValues } from 'types/forms';
 import { errorMessage } from 'utils/helpers';
 import * as Yup from 'yup';
-
-import { umbrellaBeachIconDefinition } from '@/plugins/fontawesome';
 
 const logInSchema = Yup.object().shape({
   email: Yup.string()

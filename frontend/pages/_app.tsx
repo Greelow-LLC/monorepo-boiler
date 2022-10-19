@@ -6,7 +6,7 @@ import { Hydrate, QueryClient, QueryClientProvider } from 'react-query';
 
 import type { AppProps } from 'next/app';
 
-import 'styles/globals.css';
+import 'styles/app.scss';
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [queryClient] = useState(() => new QueryClient());

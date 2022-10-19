@@ -1,9 +1,7 @@
-import styles from 'styles/loader.module.css';
-
 export const SpinnerIcon = ({ height = '', width = '' }) => {
   return (
     <svg
-      className={`${styles.spinner} h-${height} w-${width}`}
+      className={`${'spinner'} h-${height} w-${width}`}
       style={{
         background: 'none',
         shapeRendering: 'auto',

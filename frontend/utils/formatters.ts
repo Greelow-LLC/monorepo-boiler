@@ -9,12 +9,10 @@ export const formatStringIntoTwoLetters = (str: string): string => {
   return initials.toUpperCase();
 };
 
-export const formatCapitalizeFirstWord = (value: string | null | number) => {
-  return value
-    ? typeof value === 'string'
-      ? value?.charAt(0).toUpperCase() + value?.slice(1)
-      : value
-    : null;
+export const formatCapitalizeFirstWord = (value: string) => {
+  return typeof value === 'string'
+    ? value?.charAt(0).toUpperCase() + value?.slice(1)
+    : value;
 };
 
 export const replaceWith_ = (str: string) => str && str.replace(' ', '_');

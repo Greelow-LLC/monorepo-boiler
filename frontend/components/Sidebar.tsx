@@ -7,7 +7,6 @@ import { UserContext } from 'contexts/userContext';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { Fragment, useContext, useEffect, useState } from 'react';
-import styles from 'styles/Home.module.css';
 import { UserContextType } from 'types/context';
 
 function classNames(...classes: any) {
@@ -80,7 +79,7 @@ const Sidebar = () => {
                 <nav className="mt-5 px-2 space-y-1">
                   <div
                     className={`
-                      ${dropdown ? styles.userMenuOpen : styles.userMenuClosed}
+                      ${dropdown ? 'userMenuOpen' : 'userMenuClosed'}
                       mb-5
                     `}>
                     <span
@@ -127,8 +126,8 @@ const Sidebar = () => {
                             className={`
                       ${
                         currentLinkSection === index
-                          ? styles.userMenuOpen
-                          : styles.userMenuClosed
+                          ? 'userMenuOpen'
+                          : 'userMenuClosed'
                       }
                       mb-5
                     `}>
@@ -215,9 +214,7 @@ const Sidebar = () => {
       <div className="hidden md:block p-3 bg-indigo-600 h-full">
         <nav className="py-5 flex flex-col ">
           <div
-            className={`${
-              dropdown ? styles.userMenuOpen : styles.userMenuClosed
-            } mb-5`}>
+            className={`${dropdown ? 'userMenuOpen' : 'userMenuClosed'} mb-5`}>
             <span
               className="cursor-pointer flex items-center capitalize text-white hover:bg-indigo-500 hover:bg-opacity-75 group mb-3 text-sm font-medium rounded-md px-2 pb-3 pt-1 gap-2"
               onClick={() => setDropdown(!dropdown)}>
@@ -263,8 +260,8 @@ const Sidebar = () => {
                       className={`
                       ${
                         currentLinkSection === index
-                          ? styles.userMenuOpen
-                          : styles.userMenuClosed
+                          ? 'userMenuOpen'
+                          : 'userMenuClosed'
                       }
                     `}>
                       <span

@@ -1,4 +1,4 @@
-/* Burguer menu */
+/* burguer menu */
 .burguer span:nth-child(1) {
   top: 0px;
 }
@@ -49,9 +49,16 @@
   transition: max-height 2.25s ease-in;
 }
 
-@media (max-width: 600px) {
-  .grid {
-    width: 100%;
-    flex-direction: column;
+/* spinner */
+.spinner {
+  animation: rotate 1.5s linear infinite;
+  z-index: 2;
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
   }
 }
+
+

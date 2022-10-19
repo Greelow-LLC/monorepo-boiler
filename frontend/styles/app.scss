@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+// global
+@import './global/resets';
+
+// custom 
+@import './custom/animations';
