@@ -1,6 +1,5 @@
 import { Dialog, Transition } from '@headlessui/react';
-// import Button from 'components/Button';
-import {Button} from 'antd'
+import Button from 'components/AntButton';
 import { CloseOutlined } from '@ant-design/icons';
 import { Fragment } from 'react';
 
@@ -71,9 +70,9 @@ const Modal: React.FC<Props> = ({
               >
                 <div className="flex justify-end">
                   <Button
-                    className="bg-red-500 hover:bg-red-400 hover:text-white text-white"
                     shape="circle"
-                    size="large"
+                    color='red'
+                    size="l"
                     icon={<CloseOutlined />}
                     onClick={onClose}
                   />

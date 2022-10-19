@@ -1,28 +1,29 @@
-import { Button } from 'antd';
+import { Button as AntButton } from 'antd';
+import { SizeType } from 'antd/es/config-provider/SizeContext';
 import { ReactElement, ReactNode } from 'react';
 
 interface Props {
-  icon?: ReactElement;
-  color?: 'red' | 'green' | 'blue' | 'sky';
   children?: ReactNode;
-  size?: 's' | 'm' | 'l';
-  shape?: 'circle' | 'default' | 'round';
   className?: string;
-  type?: 'link' | 'text' | 'ghost' | 'default' | 'primary' | 'dashed';
-  onClick?: () => void;
+  color?: 'red' | 'green' | 'blue' | 'sky';
   disabled?: boolean;
+  icon?: ReactElement;
+  onClick?: () => void;
+  shape?: 'circle' | 'default' | 'round';
+  size?: 's' | 'm' | 'l';
+  type?: 'link' | 'text' | 'ghost' | 'default' | 'primary' | 'dashed';
 }
 
-const AntButton: React.FC<Props> = ({
-  icon,
-  color = 'sky',
+const Button: React.FC<Props> = ({
   children,
-  size = 'm',
-  shape = 'round',
-  type = 'default',
   className = '',
+  color = 'sky',
   disabled = false,
+  icon,
   onClick = () => undefined,
+  shape = 'round',
+  size = 'm',
+  type = 'default',
 }) => {
   const buttonColor = {
     red: `${
@@ -49,21 +50,20 @@ const AntButton: React.FC<Props> = ({
   //   full: 'w-full h-[3.2rem] p-0 text-xl',
   // };
 
-  const buttonStyles = `${className} ${buttonColor} ${buttonSize} shadow-xl`;
+  const buttonStyles = `${className} ${buttonColor} shadow-xl`;
   return (
-    <>
-      <Button
-        onClick={onClick}
-        type={type}
-        className={buttonStyles}
-        onMouseDown={e => e.preventDefault()}
-        disabled={disabled}
-        shape={shape}
-        icon={icon && icon}
-      >
-        {children && children}
-      </Button>
-    </>
+    <AntButton
+      onClick={onClick}
+      type={type}
+      size={buttonSize as SizeType}
+      className={buttonStyles}
+      onMouseDown={e => e.preventDefault()}
+      disabled={disabled}
+      shape={shape}
+      icon={icon && icon}
+    >
+      {children && children}
+    </AntButton>
   );
 };
-export default AntButton;
+export default Button;
