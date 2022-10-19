@@ -1,9 +1,8 @@
 import { getCountries } from 'api/countries';
 import { AxiosError } from 'axios';
-import Button from 'components/AntButton';
+import Button from '@/components/Button';
 import CountriesForm from 'components/forms/CountriesForm';
 import Loader from 'components/Loader';
-import Modal from 'components/Modal';
 import ModalDelete from 'components/ModalDelete';
 import SearchInput from 'components/SearchInput';
 import Snackbar from 'components/Snackbar';
@@ -13,6 +12,7 @@ import useCountry from 'hooks/crud/useCountry';
 import useClose from 'hooks/useClose';
 import useError from 'hooks/useError';
 import MainLayout from 'layouts';
+import {Modal} from 'antd'
 import { GetServerSideProps, NextPage } from 'next';
 import { useEffect, useState } from 'react';
 import { dehydrate, QueryClient } from 'react-query';
@@ -51,6 +51,7 @@ const Countries: NextPage = () => {
   useEffect(() => {
     countries && setResults(countries);
   }, [countries]);
+
 
   const { renderError } = useError();
 
@@ -108,7 +109,7 @@ const Countries: NextPage = () => {
             <div className="flex justify-center pt-10 pb-3">
               <Button
                 color="green"
-                size='l'
+                size="l"
                 onClick={() => {
                   setModalOpen(true);
                   setIsEditOrCreate(true);
@@ -150,11 +151,15 @@ const Countries: NextPage = () => {
                     : 'Add country'
                   : 'Delete Country'
               }
-              size="md"
-              persistent
-              isOpen={isModalOpen}
-              setIsOpen={setModalOpen}
-              onClose={handleClose}
+              centered
+              open={isModalOpen}
+              width={1000}
+              destroyOnClose={true}
+              onCancel={handleClose}
+              onOk={() =>
+                !isEditOrCreate && onDelete(activeCountry?.id as number)
+              }
+              {...(isEditOrCreate ? { footer: null } : {})}
             >
               {isEditOrCreate ? (
                 <CountriesForm
@@ -163,10 +168,7 @@ const Countries: NextPage = () => {
                   setAlert={setAlert}
                 />
               ) : (
-                <ModalDelete
-                  deleteFunction={() => onDelete(activeCountry?.id as number)}
-                  isLoading={isLoadingDelete}
-                />
+                <ModalDelete isLoading={isLoadingDelete} />
               )}
             </Modal>
           </>

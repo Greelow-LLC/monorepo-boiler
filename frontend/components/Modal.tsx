@@ -1,5 +1,5 @@
 import { Dialog, Transition } from '@headlessui/react';
-import Button from 'components/AntButton';
+import Button from '@/components/Button';
 import { CloseOutlined } from '@ant-design/icons';
 import { Fragment } from 'react';
 

@@ -1,9 +1,11 @@
-.ant-btn {
+.ant-btn-primary {
   color: white;
   outline: none;
+  border: 0px; 
+
   &:hover {
     color: white;
     outline: none;
-    border: 1px solid rgb(217, 217, 217); 
+    border: 0px; 
   }
 }

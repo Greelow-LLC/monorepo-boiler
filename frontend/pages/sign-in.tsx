@@ -1,6 +1,5 @@
-import Button from 'components/Button';
+import Button from '@/components/Button';
 import CustomInput from 'components/CustomInput';
-import Loader from 'components/Loader';
 import { getCookie } from 'cookies-next';
 import { ErrorMessage, Form, Formik } from 'formik';
 import useAuth from 'hooks/crud/useAuth';
@@ -60,7 +59,8 @@ const LogIn: NextPage = () => {
               <Formik
                 initialValues={logInValues}
                 validationSchema={logInSchema}
-                onSubmit={onSubmit}>
+                onSubmit={onSubmit}
+              >
                 {({ getFieldProps }) => (
                   <Form>
                     {isErrorLogin && (
@@ -98,17 +98,14 @@ const LogIn: NextPage = () => {
                     </div>
                     <div>
                       <Button
-                        type="submit"
-                        size="full"
-                        label={
-                          isLoading ? (
-                            <Loader isScreen={false} isButton />
-                          ) : (
-                            'Submit'
-                          )
-                        }
+                        className="w-full"
+                        size="l"
                         color="green"
-                      />
+                        loading={isLoading}
+                        htmlType="submit"
+                      >
+                        {isLoading ? ' ' : 'Submit'}
+                      </Button>
                     </div>
                   </Form>
                 )}

@@ -1,9 +1,9 @@
-import { TestIcon, WorldIcon } from 'components/svg';
+import { DatabaseOutlined, GlobalOutlined } from '@ant-design/icons';
 import { Navigation } from 'types/config';
 
 export const icons = {
-  test: TestIcon,
-  geo: WorldIcon,
+  test: DatabaseOutlined,
+  geo: GlobalOutlined,
 };
 
 export const navigation: Navigation[] = [

@@ -1,16 +1,10 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Button from 'components/Button';
+import Button from '@/components/Button';
 import { NextPage } from 'next';
 import Link from 'next/link';
-import { umbrellaBeachIconDefinition } from 'plugins/fontawesome';
 
 const NotFound: NextPage = () => {
   return (
     <main className="h-screen flex flex-col justify-center items-center">
-      <FontAwesomeIcon
-        className="pb-3 -w-[50px] h-[50px] xs:w-[70px] xs:h-[70px] md:h-[100px] md:w-[100px]"
-        icon={umbrellaBeachIconDefinition}
-      />
       <article className="md:flex gap-5 px-2">
         <section>
           <span className=" text-custom-green font-semibold text-4xl md:text-6xl">
@@ -27,7 +21,9 @@ const NotFound: NextPage = () => {
           <div className="md:pl-5 mt-5">
             <Link href="/">
               <a>
-                <Button label="Go back home" size="md" color="green" />
+                <Button size="l" color="green">
+                  Go back home
+                </Button>
               </a>
             </Link>
           </div>

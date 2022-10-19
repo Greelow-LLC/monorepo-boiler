@@ -1,11 +1,10 @@
-import Button from 'components/Button';
+import Button from '@/components/Button';
 import CustomInput from 'components/CustomInput';
-import Loader from 'components/Loader';
 import { ErrorMessage, Form, Formik } from 'formik';
 import useCountry from 'hooks/crud/useCountry';
 import useError from 'hooks/useError';
 import useSubmit from 'hooks/useSubmit';
-import React, { SetStateAction, useEffect } from 'react';
+import React, { SetStateAction } from 'react';
 import { CountriesData } from 'types/api';
 import { CountriesValues, FormValues } from 'types/forms';
 import { formatCapitalizeFirstWord } from 'utils/formatters';
@@ -66,7 +65,8 @@ const CountriesForm: React.FC<CountriesFormProps> = ({
       enableReinitialize={true}
       initialValues={countriesValues}
       onSubmit={onSubmit}
-      validationSchema={countriesSchema}>
+      validationSchema={countriesSchema}
+    >
       {({ getFieldProps }) => (
         <Form>
           {isErrorForm && (
@@ -88,13 +88,14 @@ const CountriesForm: React.FC<CountriesFormProps> = ({
           </div>
           <div className="py-3">
             <Button
-              type="submit"
+              className="w-full"
+              size="l"
               color="green"
-              size="full"
-              label={
-                isLoading ? <Loader isScreen={false} isButton /> : 'Submit'
-              }
-            />
+              loading={isLoading}
+              htmlType="submit"
+            >
+              {isLoading ? ' ' : 'Submit'}
+            </Button>
           </div>
         </Form>
       )}
