@@ -1,13 +1,13 @@
 import { Dialog, Transition } from '@headlessui/react';
-import Avatar from 'components/Avatar';
-import Button from '@/components/Button';
+import Button from 'components/Button';
 import { navigation, icons } from 'config/navigation';
 import { UserContext } from 'contexts/userContext';
+import {Avatar} from 'antd';
+import { CloseOutlined, DownOutlined, MenuOutlined } from '@ant-design/icons';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { Fragment, useContext, useEffect, useState } from 'react';
 import { UserContextType } from 'types/context';
-import { CloseOutlined, DownOutlined, MenuOutlined } from '@ant-design/icons';
 
 function classNames(...classes: any) {
   return classes.filter(Boolean).join(' ');
@@ -89,17 +89,11 @@ const Sidebar = () => {
                       className="cursor-pointer flex items-center capitalize text-white hover:bg-indigo-500 hover:bg-opacity-75 group gap-2 px-2 py-2 mb-3 text-sm font-medium rounded-md "
                       onClick={() => setDropdown(!dropdown)}
                     >
-                      <Avatar
-                        url={null}
-                        size="xs"
-                        alt="user image"
-                        initials={
-                          currentUser
-                            ? currentUser?.firstName[0] +
-                              currentUser?.lastName[0]
-                            : 'TS'
-                        }
-                      />
+                      <Avatar alt="user image" className="bg-red-600">
+                        {currentUser
+                          ? currentUser?.firstName[0] + currentUser?.lastName[0]
+                          : 'TS'}
+                      </Avatar>
                       {currentUser?.firstName}
                       <DownOutlined
                         className={`ml-3 transition-all ${
@@ -227,16 +221,11 @@ const Sidebar = () => {
               className="cursor-pointer flex items-center capitalize text-white hover:bg-indigo-500 hover:bg-opacity-75 group mb-3 text-sm font-medium rounded-md px-2 pb-3 pt-1 gap-2"
               onClick={() => setDropdown(!dropdown)}
             >
-              <Avatar
-                url={null}
-                size="xs"
-                alt="user image"
-                initials={
-                  currentUser
-                    ? currentUser?.firstName[0] + currentUser?.lastName[0]
-                    : 'TS'
-                }
-              />
+              <Avatar alt="user image" className="bg-red-600">
+                {currentUser
+                  ? currentUser?.firstName[0] + currentUser?.lastName[0]
+                  : 'TS'}
+              </Avatar>
               {currentUser?.firstName}
               <DownOutlined
                 className={`ml-3 transition-all ${
