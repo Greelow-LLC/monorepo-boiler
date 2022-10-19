@@ -1,5 +1,6 @@
-import React from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
+import React from 'react';
+
 import Loader from '../components/Loader';
 import '../styles/globals.css';
 

@@ -1,9 +1,9 @@
+import { CloseOutlined, DownOutlined, MenuOutlined } from '@ant-design/icons';
 import { Dialog, Transition } from '@headlessui/react';
+import { Avatar } from 'antd';
 import Button from 'components/Button';
 import { navigation, icons } from 'config/navigation';
 import { UserContext } from 'contexts/userContext';
-import {Avatar} from 'antd';
-import { CloseOutlined, DownOutlined, MenuOutlined } from '@ant-design/icons';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import React, { Fragment, useContext, useEffect, useState } from 'react';
@@ -38,8 +38,7 @@ const Sidebar = () => {
         <Dialog
           as="div"
           className="fixed inset-0 flex z-40 md:hidden"
-          onClose={handleCloseSideBar}
-        >
+          onClose={handleCloseSideBar}>
           <Transition.Child
             as={Fragment}
             enter="transition-opacity ease-linear duration-300"
@@ -47,8 +46,7 @@ const Sidebar = () => {
             enterTo="opacity-100"
             leave="transition-opacity ease-linear duration-300"
             leaveFrom="opacity-100"
-            leaveTo="opacity-0"
-          >
+            leaveTo="opacity-0">
             <Dialog.Overlay className="fixed inset-0 bg-gray-600 bg-opacity-75" />
           </Transition.Child>
           <Transition.Child
@@ -58,8 +56,7 @@ const Sidebar = () => {
             enterTo="translate-x-0"
             leave="transition ease-in-out duration-300 transform"
             leaveFrom="translate-x-0"
-            leaveTo="-translate-x-full"
-          >
+            leaveTo="-translate-x-full">
             <div className="relative flex-1 flex flex-col max-w-xs w-full bg-indigo-700">
               <Transition.Child
                 as={Fragment}
@@ -68,8 +65,7 @@ const Sidebar = () => {
                 enterTo="opacity-100"
                 leave="ease-in-out duration-300"
                 leaveFrom="opacity-100"
-                leaveTo="opacity-0"
-              >
+                leaveTo="opacity-0">
                 <div className="absolute top-0 right-0 -mr-14 pt-2">
                   <Button
                     icon={<CloseOutlined />}
@@ -83,12 +79,10 @@ const Sidebar = () => {
                     className={`
                       ${dropdown ? 'userMenuOpen' : 'userMenuClosed'}
                       mb-5
-                    `}
-                  >
+                    `}>
                     <span
                       className="cursor-pointer flex items-center capitalize text-white hover:bg-indigo-500 hover:bg-opacity-75 group gap-2 px-2 py-2 mb-3 text-sm font-medium rounded-md "
-                      onClick={() => setDropdown(!dropdown)}
-                    >
+                      onClick={() => setDropdown(!dropdown)}>
                       <Avatar alt="user image" className="bg-red-600">
                         {currentUser
                           ? currentUser?.firstName[0] + currentUser?.lastName[0]
@@ -104,8 +98,7 @@ const Sidebar = () => {
                     <div
                       className={`transition-all overflow-y-hidden pb-3 ${
                         !dropdown ? 'scale-y-0' : 'scale-y-1'
-                      }`}
-                    >
+                      }`}>
                       <Button color="red" onClick={logout}>
                         Sign out
                       </Button>
@@ -126,8 +119,7 @@ const Sidebar = () => {
                           : 'userMenuClosed'
                       }
                       mb-5
-                    `}
-                          >
+                    `}>
                             <span
                               className="text-white hover:bg-indigo-600 hover:bg-opacity-75,
                             group flex items-center px-2 py-2 text-base font-medium rounded-md"
@@ -135,8 +127,7 @@ const Sidebar = () => {
                                 setCurrentLinkSection(
                                   currentLinkSection === index ? null : index,
                                 )
-                              }
-                            >
+                              }>
                               <Icon
                                 className="mr-4 flex-shrink-0 h-6 w-6 text-indigo-300"
                                 aria-hidden="true"
@@ -154,11 +145,12 @@ const Sidebar = () => {
                                 currentLinkSection !== index
                                   ? 'scale-y-0'
                                   : 'scale-y-1'
-                              }`}
-                            >
+                              }`}>
                               {item.children
-                                ?.sort((a, b) => a.name.localeCompare(b.name))
-                                .map((child, index) => {
+                                ?.sort((a: any, b: any) =>
+                                  a.name.localeCompare(b.name),
+                                )
+                                .map((child: any, index: number) => {
                                   const ChildIcon =
                                     icons[child.icon as keyof typeof icons];
                                   return (
@@ -169,8 +161,7 @@ const Sidebar = () => {
                                             ? 'bg-indigo-800 text-white'
                                             : 'text-white hover:bg-indigo-600 hover:bg-opacity-75',
                                           'group flex items-center px-2 py-2 text-base font-medium rounded-md',
-                                        )}
-                                      >
+                                        )}>
                                         <ChildIcon
                                           className="mr-4 flex-shrink-0 h-6 w-6 text-indigo-300"
                                           aria-hidden="true"
@@ -192,8 +183,7 @@ const Sidebar = () => {
                                 ? 'bg-indigo-800 text-white'
                                 : 'text-white hover:bg-indigo-600 hover:bg-opacity-75',
                               'group flex items-center px-2 py-2 text-base font-medium rounded-md',
-                            )}
-                          >
+                            )}>
                             <Icon
                               className="mr-4 flex-shrink-0 h-6 w-6 text-indigo-300"
                               aria-hidden="true"
@@ -215,12 +205,10 @@ const Sidebar = () => {
       <div className="hidden md:block p-3 bg-indigo-600 h-full">
         <nav className="py-5 flex flex-col ">
           <div
-            className={`${dropdown ? 'userMenuOpen' : 'userMenuClosed'} mb-5`}
-          >
+            className={`${dropdown ? 'userMenuOpen' : 'userMenuClosed'} mb-5`}>
             <span
               className="cursor-pointer flex items-center capitalize text-white hover:bg-indigo-500 hover:bg-opacity-75 group mb-3 text-sm font-medium rounded-md px-2 pb-3 pt-1 gap-2"
-              onClick={() => setDropdown(!dropdown)}
-            >
+              onClick={() => setDropdown(!dropdown)}>
               <Avatar alt="user image" className="bg-red-600">
                 {currentUser
                   ? currentUser?.firstName[0] + currentUser?.lastName[0]
@@ -236,8 +224,7 @@ const Sidebar = () => {
             <div
               className={`transition-all overflow-y-hidden pb-3 ${
                 !dropdown ? 'scale-y-0' : 'scale-y-1'
-              }`}
-            >
+              }`}>
               <div className="mt-3 ml-3 flex flex-col gap-2">
                 {/* <button
                   onClick={logout}
@@ -247,8 +234,7 @@ const Sidebar = () => {
                 </button> */}
                 <Button
                   className="group flex items-center px-3 py-2"
-                  onClick={logout}
-                >
+                  onClick={logout}>
                   Sign out
                 </Button>
               </div>
@@ -269,16 +255,14 @@ const Sidebar = () => {
                           ? 'userMenuOpen'
                           : 'userMenuClosed'
                       }
-                    `}
-                    >
+                    `}>
                       <span
                         className="cursor-pointer group flex items-center px-2 py-2 text-sm font-medium rounded-md text-white hover:bg-indigo-500 hover:bg-opacity-75"
                         onClick={() =>
                           setCurrentLinkSection(
                             currentLinkSection === index ? null : index,
                           )
-                        }
-                      >
+                        }>
                         <Icon
                           className="mr-4 text-xl text-indigo-300"
                           aria-hidden="true"
@@ -295,11 +279,12 @@ const Sidebar = () => {
                           currentLinkSection !== index
                             ? 'scale-y-0'
                             : 'scale-y-1'
-                        }`}
-                      >
+                        }`}>
                         {item.children
-                          ?.sort((a, b) => a.name.localeCompare(b.name))
-                          .map((child, index) => {
+                          ?.sort((a: any, b: any) =>
+                            a.name.localeCompare(b.name),
+                          )
+                          .map((child: any, index: any) => {
                             const ChildIcon =
                               icons[child.icon as keyof typeof icons];
                             return (
@@ -310,8 +295,7 @@ const Sidebar = () => {
                                       ? 'bg-indigo-800 text-white'
                                       : 'text-white hover:bg-indigo-500 hover:bg-opacity-75',
                                     'group flex items-center px-2 py-2 text-sm font-medium rounded-md',
-                                  )}
-                                >
+                                  )}>
                                   <ChildIcon
                                     className="mr-4 text-xl text-indigo-300"
                                     aria-hidden="true"
@@ -333,8 +317,7 @@ const Sidebar = () => {
                           ? 'bg-indigo-800 text-white'
                           : 'text-white hover:bg-indigo-500 hover:bg-opacity-75',
                         'group flex items-center px-2 py-2 text-sm font-medium rounded-md',
-                      )}
-                    >
+                      )}>
                       <Icon
                         className="mr-4 flex-shrink-0 h-6 w-6 text-indigo-300"
                         aria-hidden="true"
@@ -352,8 +335,7 @@ const Sidebar = () => {
           <button
             type="button"
             className="-ml-0.5 -mt-0.5 h-12 w-12 inline-flex items-center justify-center rounded-md text-gray-500 hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
-            onClick={() => setSidebarOpen(true)}
-          >
+            onClick={() => setSidebarOpen(true)}>
             <MenuOutlined />
           </button>
         </div>

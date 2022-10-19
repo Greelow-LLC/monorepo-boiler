@@ -11,7 +11,7 @@
   "settings": {
     "import/resolver": {
       "node": {
-        "paths": ["./src"]
+        "paths": ["src"]
       }
     }
   },
@@ -22,14 +22,15 @@
       "warn",
       {
         "groups": [
-          "external",
-          "type",
           "builtin",
-          "object",
+          "external",
           "internal",
+          "unknown",
           "parent",
           "sibling",
-          "index"
+          "index",
+          "object",
+          "type"
         ],
         "newlines-between": "always",
         "alphabetize": {

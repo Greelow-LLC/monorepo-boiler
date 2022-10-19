@@ -13,11 +13,9 @@ const ModalDelete = ({ isLoading = false }: Props) => {
           <Loader isScreen={false} />
         </div>
       ) : (
-          <div className="p-2">
-            <p className="text-lg">
-              Are you sure you want to delete this item?
-            </p>
-          </div>
+        <div className="p-2">
+          <p className="text-lg">Are you sure you want to delete this item?</p>
+        </div>
       )}
     </>
   );

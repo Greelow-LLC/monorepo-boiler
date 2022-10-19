@@ -1,6 +1,6 @@
-import { LoginData, RegisterUser } from 'types/api';
-import { LogInValues } from 'types/forms';
-import { postHttp } from 'utils/http';
+import { LoginData, RegisterUser } from '@/src/types/api';
+import { LogInValues } from '@/src/types/forms';
+import { postHttp } from '@/src/utils/http';
 
 export const registerUser = async (body: RegisterUser): Promise<LoginData> =>
   await postHttp('users/register', body);

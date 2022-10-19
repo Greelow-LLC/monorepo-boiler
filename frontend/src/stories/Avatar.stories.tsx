@@ -2,7 +2,7 @@ import React from "react";
 
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import Avatar from "../components/Avatar";
+import Avatar from "../src/components/Avatar";
 
 import "../styles/globals.css";
 

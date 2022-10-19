@@ -61,8 +61,7 @@ const Button: React.FC<Props> = ({
       disabled={disabled}
       shape={shape}
       icon={icon && icon}
-      {...props}
-    >
+      {...props}>
       {children && children}
     </AntButton>
   );
