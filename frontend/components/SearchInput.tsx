@@ -1,4 +1,4 @@
-import { SearchIcon } from 'components/svg';
+import { SearchOutlined } from '@ant-design/icons';
 import React, { useEffect } from 'react';
 
 interface Props {
@@ -41,7 +41,7 @@ const SearchInput = ({
     <div className="flex justify-start pt-10 pb-3 items-center pr-5">
       <div className="border bg-white-off rounded-md">
         <div className="flex items-center gap-2 px-2 bg-white">
-          <SearchIcon />
+          <SearchOutlined className='text-lg' />
           <input
             className="w-[300px] border h-full bg-white border-white focus:border-white focus:ring-0 shadow-2xl"
             type="search"

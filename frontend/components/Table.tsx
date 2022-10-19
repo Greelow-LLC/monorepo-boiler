@@ -1,6 +1,7 @@
-import { PencilIcon, TrashIcon } from 'components/svg';
+import { DeleteOutlined, EditOutlined } from '@ant-design/icons';
 import { formatCapitalizeFirstWord } from 'utils/formatters';
 import { separateCamelCaseString } from 'utils/formatters';
+import Button from './Button';
 
 interface Props {
   data: any[] | undefined;
@@ -31,7 +32,8 @@ const Table = ({
                         <th
                           key={index}
                           scope="col"
-                          className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                          className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider"
+                        >
                           {separateCamelCaseString(
                             key.includes('_') ? key.replace('_', ' ') : key,
                           )}
@@ -42,12 +44,14 @@ const Table = ({
                     <>
                       <th
                         scope="col"
-                        className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider"
+                      >
                         Edit
                       </th>
                       <th
                         scope="col"
-                        className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
+                        className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider"
+                      >
                         Delete
                       </th>
                     </>
@@ -60,31 +64,36 @@ const Table = ({
                     {Object.keys(obj).map((key: any) => (
                       <td
                         key={key}
-                        className="py-4 px-10 text-center truncate max-w-[22ch]">
+                        className="py-4 px-10 text-center truncate max-w-[22ch]"
+                      >
                         {formatCapitalizeFirstWord(obj[key]) ?? 'N/A'}
                       </td>
                     ))}
                     {hasButtons && (
                       <>
                         <td className="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
-                          <button
-                            className="bg-blue-600 hover:bg-blue-700 rounded-full p-3 text-white"
+                          <Button
+                            color="blue"
+                            shape="circle"
+                            size="l"
+                            icon={<EditOutlined />}
                             onClick={() => {
                               onEdit();
                               setActive(obj.id);
-                            }}>
-                            <PencilIcon />
-                          </button>
+                            }}
+                          />
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
-                          <button
-                            className="bg-red-500 hover:bg-red-700 rounded-full p-3 text-white"
+                          <Button
+                            shape="circle"
+                            color="red"
+                            size="l"
+                            icon={<DeleteOutlined />}
                             onClick={() => {
                               onDelete();
                               setActive(obj.id);
-                            }}>
-                            <TrashIcon />
-                          </button>
+                            }}
+                          />
                         </td>
                       </>
                     )}
