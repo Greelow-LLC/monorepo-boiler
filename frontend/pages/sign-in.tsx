@@ -1,3 +1,4 @@
+import Button from 'components/Button';
 import CustomInput from 'components/CustomInput';
 import { getCookie } from 'cookies-next';
 import { ErrorMessage, Form, Formik } from 'formik';
@@ -10,8 +11,6 @@ import { useState } from 'react';
 import { FormValues, LogInValues } from 'types/forms';
 import { errorMessage } from 'utils/helpers';
 import * as Yup from 'yup';
-
-import Button from '@/components/Button';
 
 const logInSchema = Yup.object().shape({
   email: Yup.string()

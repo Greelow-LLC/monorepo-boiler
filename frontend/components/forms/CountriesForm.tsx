@@ -1,3 +1,4 @@
+import Button from 'components/Button';
 import CustomInput from 'components/CustomInput';
 import { ErrorMessage, Form, Formik } from 'formik';
 import useCountry from 'hooks/crud/useCountry';
@@ -9,8 +10,6 @@ import { CountriesValues, FormValues } from 'types/forms';
 import { formatCapitalizeFirstWord } from 'utils/formatters';
 import { errorMessage } from 'utils/helpers';
 import * as Yup from 'yup';
-
-import Button from '@/components/Button';
 
 interface CountriesFormProps {
   active: CountriesData | null;

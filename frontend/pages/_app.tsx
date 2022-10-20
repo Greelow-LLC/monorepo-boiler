@@ -2,7 +2,12 @@ import Loader from 'components/Loader';
 import UserProvider from 'contexts/userContext';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import { Hydrate, QueryClient, QueryClientProvider } from 'react-query';
+import {
+  Hydrate,
+  QueryClient,
+  QueryClientProvider,
+  dehydrate,
+} from 'react-query';
 
 import type { AppProps } from 'next/app';
 
@@ -28,7 +33,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <Hydrate state={pageProps.dehydratedState}>
+      <Hydrate state={dehydrate}>
         <UserProvider>
           {pageLoading ? <Loader /> : <Component {...pageProps} />}
         </UserProvider>

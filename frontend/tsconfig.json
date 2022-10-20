@@ -3,12 +3,13 @@
   "compilerOptions": {
     "target": "es6",
     "lib": ["dom", "dom.iterable", "esnext", "es6", "es2017"],
-    "outDir": "build",
     "allowJs": true,
+    "outDir": "build",
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
     "module": "esnext",
     "moduleResolution": "node",
+    "resolveJsonModule": true,
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
@@ -18,10 +19,6 @@
     },
     "sourceMap": false
   },
-  "include": [
-    "next-env.d.ts",
-    "**/*.ts",
-    "**/*.tsx",
-  ],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]
 }

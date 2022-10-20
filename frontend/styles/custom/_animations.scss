@@ -49,16 +49,3 @@
   transition: max-height 2.25s ease-in;
 }
 
-/* spinner */
-.spinner {
-  animation: rotate 1.5s linear infinite;
-  z-index: 2;
-}
-
-@keyframes rotate {
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
-
