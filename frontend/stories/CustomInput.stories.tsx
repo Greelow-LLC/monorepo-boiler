@@ -1,6 +1,6 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import CustomInput from "@/src/components/CustomInput";
+import CustomInput from "components/CustomInput";
 import "../styles/globals.css";
 
 export default {

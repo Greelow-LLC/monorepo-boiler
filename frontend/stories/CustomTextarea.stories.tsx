@@ -1,6 +1,6 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import CustomTextarea from "@/src/components/CustomTextarea";
+import CustomTextarea from "components/CustomTextarea";
 import "../styles/globals.css";
 
 export default {

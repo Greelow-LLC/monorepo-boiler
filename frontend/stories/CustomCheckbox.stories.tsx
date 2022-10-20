@@ -1,6 +1,6 @@
 import React from "react";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
-import CustomCheckbox from "@/src/components/CustomCheckbox";
+import CustomCheckbox from "components/CustomCheckbox";
 import "../styles/globals.css";
 
 export default {

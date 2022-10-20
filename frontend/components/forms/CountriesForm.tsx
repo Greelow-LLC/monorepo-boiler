@@ -1,4 +1,4 @@
-import Button from 'components/Button';
+import Button from '@/components/Button';
 import CustomInput from 'components/CustomInput';
 import { ErrorMessage, Form, Formik } from 'formik';
 import useCountry from 'hooks/crud/useCountry';
@@ -65,7 +65,8 @@ const CountriesForm: React.FC<CountriesFormProps> = ({
       enableReinitialize={true}
       initialValues={countriesValues}
       onSubmit={onSubmit}
-      validationSchema={countriesSchema}>
+      validationSchema={countriesSchema}
+    >
       {({ getFieldProps }) => (
         <Form>
           {isErrorForm && (
@@ -91,7 +92,8 @@ const CountriesForm: React.FC<CountriesFormProps> = ({
               size="l"
               color="green"
               loading={isLoading}
-              htmlType="submit">
+              htmlType="submit"
+            >
               {isLoading ? ' ' : 'Submit'}
             </Button>
           </div>

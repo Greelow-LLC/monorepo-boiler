@@ -1,15 +1,14 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
-import React from 'react';
-
-import CustomRadio from '../components/CustomRadio';
-import '../styles/globals.css';
+import React from "react";
+import { ComponentStory, ComponentMeta } from "@storybook/react";
+import CustomRadio from "../components/CustomRadio";
+import "../styles/globals.css";
 
 export default {
-  title: 'Form/Radio',
+  title: "Form/Radio",
   component: CustomRadio,
   argTypes: {
     label: {
-      control: { type: 'text' },
+      control: { type: "text" },
     },
   },
 } as ComponentMeta<typeof CustomRadio>;
@@ -28,7 +27,7 @@ const Template: ComponentStory<typeof CustomRadio> = ({
 
 export const Generic = Template.bind({});
 Generic.args = {
-  label: 'Options',
-  id: 'select',
-  name: 'Option',
+  label: "Options",
+  id: "select",
+  name: "Option",
 };

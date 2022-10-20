@@ -1,5 +1,5 @@
 import { EyeInvisibleOutlined, EyeOutlined } from '@ant-design/icons';
-import Button from 'components/Button';
+import Button from '@/components/Button';
 import { AnyMaskedOptions } from 'imask';
 import React, { useCallback, useState, useEffect } from 'react';
 import { useIMask } from 'react-imask';
@@ -55,7 +55,8 @@ const CustomInput = ({
         </label>
       )}
       <div
-        className={`mr-2 w-full h-[50px] rounded-full bg-white-off border-gray-300 flex items-center justify-between ${className}`}>
+        className={`mr-2 w-full h-[50px] rounded-full bg-white-off border-gray-300 flex items-center justify-between ${className}`}
+      >
         <input
           {...props}
           formNoValidate={true}
@@ -66,9 +67,9 @@ const CustomInput = ({
         {isPassWordInput && (
           <Button
             className="px-3 text-black"
-            type="default"
+            type='default'
             shape="round"
-            size="l"
+            size='l'
             onClick={handleToggleInputType}
             htmlType="button"
             icon={
