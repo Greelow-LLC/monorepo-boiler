@@ -1,6 +1,7 @@
 import { DeleteOutlined, EditOutlined } from '@ant-design/icons';
 import { formatCapitalizeFirstWord } from 'utils/formatters';
 import { separateCamelCaseString } from 'utils/formatters';
+
 import Button from './Button';
 
 interface Props {
@@ -32,8 +33,7 @@ const Table = ({
                         <th
                           key={index}
                           scope="col"
-                          className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider"
-                        >
+                          className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
                           {separateCamelCaseString(
                             key.includes('_') ? key.replace('_', ' ') : key,
                           )}
@@ -44,14 +44,12 @@ const Table = ({
                     <>
                       <th
                         scope="col"
-                        className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider"
-                      >
+                        className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
                         Edit
                       </th>
                       <th
                         scope="col"
-                        className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider"
-                      >
+                        className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">
                         Delete
                       </th>
                     </>
@@ -64,8 +62,7 @@ const Table = ({
                     {Object.keys(obj).map((key: any) => (
                       <td
                         key={key}
-                        className="py-4 px-10 text-center truncate max-w-[22ch]"
-                      >
+                        className="py-4 px-10 text-center truncate max-w-[22ch]">
                         {formatCapitalizeFirstWord(obj[key]) ?? 'N/A'}
                       </td>
                     ))}

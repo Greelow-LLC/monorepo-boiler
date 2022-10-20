@@ -1,6 +1,6 @@
+import { Modal } from 'antd';
 import { getCountries } from 'api/countries';
 import { AxiosError } from 'axios';
-import Button from '@/components/Button';
 import CountriesForm from 'components/forms/CountriesForm';
 import Loader from 'components/Loader';
 import ModalDelete from 'components/ModalDelete';
@@ -12,12 +12,13 @@ import useCountry from 'hooks/crud/useCountry';
 import useClose from 'hooks/useClose';
 import useError from 'hooks/useError';
 import MainLayout from 'layouts';
-import {Modal} from 'antd'
 import { GetServerSideProps, NextPage } from 'next';
 import { useEffect, useState } from 'react';
 import { dehydrate, QueryClient } from 'react-query';
 import { CountriesData } from 'types/api';
 import { errorMessage } from 'utils/helpers';
+
+import Button from '@/components/Button';
 
 const Countries: NextPage = () => {
   const [filterValue, setFilterValue] = useState<string>('');
@@ -51,7 +52,6 @@ const Countries: NextPage = () => {
   useEffect(() => {
     countries && setResults(countries);
   }, [countries]);
-
 
   const { renderError } = useError();
 
@@ -113,8 +113,7 @@ const Countries: NextPage = () => {
                 onClick={() => {
                   setModalOpen(true);
                   setIsEditOrCreate(true);
-                }}
-              >
+                }}>
                 Add Country
               </Button>
             </div>
@@ -159,8 +158,7 @@ const Countries: NextPage = () => {
               onOk={() =>
                 !isEditOrCreate && onDelete(activeCountry?.id as number)
               }
-              {...(isEditOrCreate ? { footer: null } : {})}
-            >
+              {...(isEditOrCreate ? { footer: null } : {})}>
               {isEditOrCreate ? (
                 <CountriesForm
                   active={activeCountry}
@@ -194,15 +192,15 @@ const Countries: NextPage = () => {
 };
 
 export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
-  // const user = getCookie('user', { req, res });
+  const user = getCookie('user', { req, res });
 
-  // if (!user)
-  //   return {
-  //     redirect: {
-  //       destination: '/sign-in',
-  //     },
-  //     props: {},
-  //   };
+  if (!user)
+    return {
+      redirect: {
+        destination: '/sign-in',
+      },
+      props: {},
+    };
 
   const queryClient = new QueryClient();
 

@@ -1,8 +1,7 @@
-import Button from '@/components/Button';
 import CustomInput from 'components/CustomInput';
 import { getCookie } from 'cookies-next';
 import { ErrorMessage, Form, Formik } from 'formik';
-// import useAuth from 'hooks/crud/useAuth';
+import useAuth from 'hooks/crud/useAuth';
 import useError from 'hooks/useError';
 import useSubmit from 'hooks/useSubmit';
 import MainLayout from 'layouts';
@@ -12,6 +11,8 @@ import { FormValues, LogInValues } from 'types/forms';
 import { errorMessage } from 'utils/helpers';
 import * as Yup from 'yup';
 
+import Button from '@/components/Button';
+
 const logInSchema = Yup.object().shape({
   email: Yup.string()
     .required('Please provide your email adress')
@@ -20,34 +21,34 @@ const logInSchema = Yup.object().shape({
 });
 
 const LogIn: NextPage = () => {
-  // const [isLoading, setIsLoading] = useState<boolean>(false);
-  // const [, setNetworkError] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [, setNetworkError] = useState<string | null>(null);
 
-  // const { handleLogin, errorLogin, isErrorLogin } = useAuth();
+  const { handleLogin, errorLogin, isErrorLogin } = useAuth();
 
-  // const { renderError } = useError();
+  const { renderError } = useError();
 
-  // const logInValues: LogInValues = t{
-  //   email: '',
-  //   password: '',
-  // };
+  const logInValues: LogInValues = {
+    email: '',
+    password: '',
+  };
 
-  // const handleSubmit = async (valuesToSend: FormValues) => {
-  //   try {
-  //     setIsLoading(true);
-  //     await handleLogin(valuesToSend as LogInValues);
-  //     setNetworkError(null);
-  //   } catch (error: any) {
-  //     setNetworkError(error?.message);
-  //     setIsLoading(false);
-  //   }
-  // };
+  const handleSubmit = async (valuesToSend: FormValues) => {
+    try {
+      setIsLoading(true);
+      await handleLogin(valuesToSend as LogInValues);
+      setNetworkError(null);
+    } catch (error: any) {
+      setNetworkError(error?.message);
+      setIsLoading(false);
+    }
+  };
 
-  // const { onSubmit } = useSubmit(handleSubmit);
+  const { onSubmit } = useSubmit(handleSubmit);
 
   return (
     <MainLayout page="Sign-in">
-      {/* <section className="flex justify-center w-full items-center h-screen">
+      <section className="flex justify-center w-full items-center h-screen">
         <div className="w-[95%] md:w-[60%] lg:w-[50%] xl:w-[40%] 2xl:w-[30%]">
           <section className="p-12 flex flex-col justify-center items-center">
             <h1 className="font-bold text-md xs:text-2xl md:text-4xl">
@@ -59,8 +60,7 @@ const LogIn: NextPage = () => {
               <Formik
                 initialValues={logInValues}
                 validationSchema={logInSchema}
-                onSubmit={onSubmit}
-              >
+                onSubmit={onSubmit}>
                 {({ getFieldProps }) => (
                   <Form>
                     {isErrorLogin && (
@@ -102,8 +102,7 @@ const LogIn: NextPage = () => {
                         size="l"
                         color="green"
                         loading={isLoading}
-                        htmlType="submit"
-                      >
+                        htmlType="submit">
                         {isLoading ? ' ' : 'Submit'}
                       </Button>
                     </div>
@@ -113,7 +112,7 @@ const LogIn: NextPage = () => {
             </article>
           </section>
         </div>
-      </section> */}
+      </section>
     </MainLayout>
   );
   <>
