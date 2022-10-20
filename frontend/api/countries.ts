@@ -1,6 +1,6 @@
-import { CountriesData, EditCountryKey } from '@/src/types/api';
-import { CountriesValues } from '@/src/types/forms';
-import { postHttp, getHttp, putHttp, deleteHttp } from '@/src/utils/http';
+import { CountriesData, EditCountryKey } from 'types/api';
+import { CountriesValues } from 'types/forms';
+import { postHttp, getHttp, putHttp, deleteHttp } from 'utils/http';
 
 export const getCountries = async (): Promise<CountriesData[]> =>
   await getHttp('countries');

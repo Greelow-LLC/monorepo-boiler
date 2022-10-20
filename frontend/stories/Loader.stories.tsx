@@ -1,7 +1,7 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
+import Loader from 'components/Loader';
 import React from 'react';
 
-import Loader from '../components/Loader';
 import '../styles/globals.css';
 
 export default {

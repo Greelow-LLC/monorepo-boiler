@@ -191,15 +191,15 @@ const Countries: NextPage = () => {
 };
 
 export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
-  const user = getCookie('user', { req, res });
+  // const user = getCookie('user', { req, res });
 
-  if (!user)
-    return {
-      redirect: {
-        destination: '/sign-in',
-      },
-      props: {},
-    };
+  // if (!user)
+  //   return {
+  //     redirect: {
+  //       destination: '/sign-in',
+  //     },
+  //     props: {},
+  //   };
 
   const queryClient = new QueryClient();
 

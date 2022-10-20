@@ -9,10 +9,9 @@ import type { AppProps } from 'next/app';
 import 'styles/app.scss';
 
 function MyApp({ Component, pageProps }: AppProps) {
-  const [queryClient] = useState(() => new QueryClient());
-
   const router = useRouter();
   const [pageLoading, setPageLoading] = useState<boolean>(false);
+  const [queryClient] = useState<QueryClient>(new QueryClient());
 
   useEffect(() => {
     const handleStart = () => {

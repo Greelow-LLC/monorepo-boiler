@@ -4,7 +4,6 @@
     "target": "es6",
     "lib": ["dom", "dom.iterable", "esnext", "es6", "es2017"],
     "outDir": "build",
-    "rootDir": "./src",
     "allowJs": true,
     "forceConsistentCasingInFileNames": true,
     "noEmit": true,
@@ -13,9 +12,9 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-    "baseUrl": "./",
-     "paths": {
-      "*": ["node_modules", "src/*"]
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./*"]
     },
     "sourceMap": false
   },
@@ -23,7 +22,6 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "src/stories/CustomSelect.stories.mdx"
   ],
   "exclude": ["node_modules"]
 }

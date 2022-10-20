@@ -9,8 +9,6 @@ interface Props {
   hasMenu?: boolean;
 }
 
-//TODO: fix layout design bugs
-
 const MainLayout: React.FC<Props> = ({
   children,
   page = 'Home',
