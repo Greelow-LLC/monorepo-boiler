@@ -1,5 +1,5 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { closeIconDefinition } from 'plugins/fontawesome';
+import { CloseOutlined } from '@ant-design/icons';
+import Button from 'components/Button';
 import React, { useEffect } from 'react';
 
 export interface Props {
@@ -24,11 +24,7 @@ const Snackbar = ({ closeSnack, type, message }: Props) => {
       }>
       <div>{message && <span>{message}</span>}</div>
       <div>
-        <FontAwesomeIcon
-          className="w-[10px] text-sm mr-4 cursor-pointer active:w-[9px]"
-          icon={closeIconDefinition}
-          onClick={() => closeSnack()}
-        />
+        <Button icon={<CloseOutlined />} onClick={closeSnack} />
       </div>
     </div>
   );
